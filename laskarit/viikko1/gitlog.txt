@@ -1,0 +1,113 @@
+commit 84911ab116ff9e53dada8458a64abde845fd6f76
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 14:03:54 2023 +0200
+
+    poistettu file1 muokattu file2
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d18c5cd91dfe85e991dbc4c2f44dadbb6835d3e8
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 14:01:47 2023 +0200
+
+    lisätty tiedostoja hakemisto
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 9c419dc1b78a1e0ffbccb9a86a3c7c66079ed7e8
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:57:12 2023 +0200
+
+    muutettu eka ja kolmas
+
+ eka.txt    | 2 +-
+ kolmas.txt | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+commit 78839d9349adc421e620ecaddadd81e4fd574e38
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:54:55 2023 +0200
+
+    tiedosto.txt muutettu
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8be655540d6c0bb44f422c1fa56d07f80102c518
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:53:57 2023 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit c7563d334a097abff17736364cb5f8ef3984687a
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:42:35 2023 +0200
+
+    tiedosto.txt muokattu taas
+
+ tiedosto.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 228de9acded3c16c36d5514cb4f87474b0877c77
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:39:38 2023 +0200
+
+    tiedost.txt muokattu
+
+ tiedosto.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+commit c78afaa4d072bd7ed5c0903c458643a58f0048b3
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:36:23 2023 +0200
+
+    stuff ja neljas.txt luotu
+
+ stuff/neljas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d6ca6929ba28a3d37255f01582ce85bbd00d9e57
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:35:34 2023 +0200
+
+    toinen ja kolmas muokattu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 118006d0e3c4d9d0848fcf244fffd87f5d441a08
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:34:44 2023 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0d4362cc657c2e3b1ee6d484710e1bc6b70d19b3
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:33:45 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit a5e03609312e5c05d42d8800d69fcb23b429100d
+Author: Sami Männistö <sami.mannisto1@gmail.com>
+Date:   Mon Mar 13 13:32:43 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
