@@ -111,3 +111,5 @@ Date:   Mon Mar 13 13:32:43 2023 +0200
 
  tiedosto.txt | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
+
+edit for ex17
