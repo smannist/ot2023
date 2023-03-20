@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ot2023"
+name = "maksukortti"
 version = "0.1.0"
 description = ""
 authors = ["Sami Männistö <sami.mannisto1@gmail.com>"]
