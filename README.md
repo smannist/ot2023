@@ -16,4 +16,4 @@ muutos3
 
 [Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Tuntikirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Tyoaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
