@@ -5,6 +5,7 @@ from kassapaate import Kassapaate
 class TestKassapaate(unittest.TestCase):
     def setUp(self):
         self.maksukortti = Maksukortti(1000)
+        self.maksukortti_pieni = Maksukortti(50)
         self.kassapaate = Kassapaate()
 
     def test_luodun_kassapaatteen_rahamaara_on_oikea(self):
@@ -80,18 +81,15 @@ class TestKassapaate(unittest.TestCase):
         self.assertEqual(self.kassapaate.edulliset, 1)
     
     def test_edullisen_lounaan_ostaminen_kortilla_jossa_ei_ole_tarpeeksi_saldoa_ei_muuta_saldoa(self):
-        maksukortti = Maksukortti(50)
-        self.kassapaate.syo_edullisesti_kortilla(maksukortti)
-        self.assertEqual(maksukortti.saldo, 50)
+        self.kassapaate.syo_edullisesti_kortilla(self.maksukortti_pieni)
+        self.assertEqual(self.maksukortti_pieni.saldo, 50)
 
     def test_edullisen_lounaan_ostaminen_kortilla_jossa_ei_ole_tarpeeksi_saldoa_ei_muuta_maaraa(self):
-        maksukortti = Maksukortti(50)
-        self.kassapaate.syo_edullisesti_kortilla(maksukortti)
+        self.kassapaate.syo_edullisesti_kortilla(self.maksukortti_pieni)
         self.assertEqual(self.kassapaate.edulliset, 0)
 
     def test_edullisen_lounaan_ostaminen_kortilla_jossa_ei_ole_tarpeeksi_saldoa_palauttaa_false(self):
-        maksukortti = Maksukortti(50)
-        self.assertFalse(self.kassapaate.syo_edullisesti_kortilla(maksukortti))
+        self.assertFalse(self.kassapaate.syo_edullisesti_kortilla(self.maksukortti_pieni))
     
     def test_maukkaan_lounaan_hinta_veloitetaan_kortilta(self):
         self.kassapaate.syo_maukkaasti_kortilla(self.maksukortti)
@@ -105,18 +103,15 @@ class TestKassapaate(unittest.TestCase):
         self.assertEqual(self.kassapaate.maukkaat, 1)
 
     def test_maukkaan_lounaan_ostaminen_kortilla_jossa_ei_ole_tarpeeksi_saldoa_ei_muuta_saldoa(self):
-        maksukortti = Maksukortti(50)
-        self.kassapaate.syo_maukkaasti_kortilla(maksukortti)
-        self.assertEqual(maksukortti.saldo, 50)
+        self.kassapaate.syo_maukkaasti_kortilla(self.maksukortti_pieni)
+        self.assertEqual(self.maksukortti_pieni.saldo, 50)
 
     def test_maukkaan_lounaan_ostaminen_kortilla_jossa_ei_ole_tarpeeksi_saldoa_ei_muuta_maaraa(self):
-        maksukortti = Maksukortti(50)
-        self.kassapaate.syo_maukkaasti_kortilla(maksukortti)
+        self.kassapaate.syo_maukkaasti_kortilla(self.maksukortti_pieni)
         self.assertEqual(self.kassapaate.maukkaat, 0)
 
     def test_maukkaan_lounaan_ostaminen_kortilla_jossa_ei_ole_tarpeeksi_saldoa_palauttaa_false(self):
-        maksukortti = Maksukortti(50)
-        self.assertFalse(self.kassapaate.syo_maukkaasti_kortilla(maksukortti))
+        self.assertFalse(self.kassapaate.syo_maukkaasti_kortilla(self.maksukortti_pieni))
 
     def test_kortille_rahaa_ladattaessa_kortin_saldo_muuttuu(self):
         self.kassapaate.lataa_rahaa_kortille(self.maksukortti, 1000)
