@@ -1,6 +1,5 @@
-
 ```mermaid
-sequenceDiagram 
+sequenceDiagram
   participant main
   participant laitehallinto
   participant rautatietori
@@ -19,7 +18,6 @@ sequenceDiagram
   main->>lippuluukku: Kioski()
   main->>lippuluukku: osta_matkakortti("Kalle")
   lippuluukku->>uusi_kortti: Matkakortti("Kalle")
-  lippuluukku-->>uusi_kortti: False
   uusi_kortti-->>kallen_kortti: Matkakortti("Kalle")
   main->>rautatietori: lataa_arvoa(kallen_kortti, 3)
   main->>ratikka6: osta_lippu(kallen_kortti, 0)
