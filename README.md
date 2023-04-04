@@ -17,3 +17,7 @@ muutos3
 [Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+
+### Viikko 3
+
+[Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
