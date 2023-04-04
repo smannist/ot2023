@@ -1,23 +1,9 @@
-# ot2023
+# Tetris
 
-jotain tekstiä :D
+Legendaarinen Tetris pygame kirjastolla
 
-jokin muutos ;D
+## Dokumentaatio
 
-muutos3
-
-### Viikko 1
-
-[komentorivi.txt](https://github.com/smannist/ot2023/blob/master/laskarit/viikko1/komentorivi.txt)
-
-[gitlog.txt](https://github.com/smannist/ot2023/blob/master/laskarit/viikko1/gitlog.txt)
-
-### Viikko 2
-
-[Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)
-
-[Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
-
-### Viikko 3
-
-[Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
+- [Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)
+- [Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+- [Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
