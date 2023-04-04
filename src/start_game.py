@@ -1,5 +1,5 @@
 import pygame
-from gameloop import GameLoop
+from game_loop import GameLoop
 from renderer import Renderer
 
 dimensions = {"width": 800,
