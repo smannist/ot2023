@@ -34,8 +34,8 @@ class Renderer:
                     color = colors["dark_grey"]
                 else:
                     color = colors["light_grey"]
-                line = pygame.Rect(dx + j * block_size, dy + i * block_size, block_size, block_size)
-                pygame.draw.rect(surface, color, line)
+                grid_rectangle = pygame.Rect(dx + j * block_size, dy + i * block_size, block_size, block_size)
+                pygame.draw.rect(surface, color, grid_rectangle)
 
     def render_grid_border(self, surface, dx, dy, border_width=5):
         border_rect = pygame.Rect(dx - border_width, dy - border_width, self.tetris_width + 30 + border_width, self.tetris_height + 40)
