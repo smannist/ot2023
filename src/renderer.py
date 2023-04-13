@@ -1,4 +1,5 @@
 import pygame
+from variables import PYGAME_WIDTH, PYGAME_HEIGHT, TETRIS_WIDTH, TETRIS_HEIGHT
 
 # colors are temporary until I find a color scheme that looks nice
 colors = {"black": (0,0,0),
@@ -7,21 +8,16 @@ colors = {"black": (0,0,0),
           "light_grey": (128,128,128)}
 
 class Renderer:
-    def __init__(self, display, p_width, p_height, t_width, t_height, game_grid):
+    def __init__(self, display, game_grid):
         self.display = display
-        self.pygame_width = p_width
-        self.pygame_height = p_height
-        self.tetris_width = t_width
-        self.tetris_height = t_height
-        self.game_grid = game_grid
         self.grid = game_grid.grid
 
     def render_background(self):
         self.display.fill((colors["cyan"]))
 
     def render_board(self, surface):
-        dx = (self.pygame_width - self.tetris_width) // 2   
-        dy = (self.pygame_height - self.tetris_height) // 2
+        dx = (PYGAME_WIDTH - TETRIS_WIDTH) // 2   
+        dy = (PYGAME_HEIGHT - TETRIS_HEIGHT) // 2
         self.render_grid(surface, dx, dy)
         self.render_grid_border(surface, dx, dy)
 
@@ -38,5 +34,5 @@ class Renderer:
                 pygame.draw.rect(surface, color, grid_rectangle)
 
     def render_grid_border(self, surface, dx, dy, border_width=5):
-        border_rect = pygame.Rect(dx - border_width, dy - border_width, self.tetris_width + 30 + border_width, self.tetris_height + 40)
+        border_rect = pygame.Rect(dx - border_width, dy - border_width, TETRIS_WIDTH + 30 + border_width, TETRIS_HEIGHT + 40)
         pygame.draw.rect(surface, colors["black"], border_rect, border_width)

@@ -1,9 +1,10 @@
 import numpy as np
+from variables import GAME_GRID_COLUMNS, GAME_GRID_ROWS
 
 class GameGrid:
-    def __init__(self, rows, columns):
-        self.rows = rows
-        self.columns = columns
+    def __init__(self):
+        self.rows = GAME_GRID_ROWS
+        self.columns = GAME_GRID_COLUMNS
         self.grid = self.initialize_grid()
 
     def initialize_grid(self):
