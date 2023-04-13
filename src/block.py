@@ -7,4 +7,4 @@ class Block:
         self.y = y
         self.shape = shape
         self.color = shape_colors[shape]
-        self.is_rotated = False
+        self.rotation = 0
