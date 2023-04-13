@@ -6,6 +6,7 @@ class GameGrid:
         self.rows = GAME_GRID_ROWS
         self.columns = GAME_GRID_COLUMNS
         self.grid = self.initialize_grid()
+        self.placed_blocks = []
 
     def initialize_grid(self):
-        return np.zeros((self.rows, self.columns))
+        return np.zeros((self.rows, self.columns, 3))

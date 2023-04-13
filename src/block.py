@@ -1,10 +1,11 @@
+import random
 from block_shapes import SHAPES
-from colors import shape_colors
+from config import SHAPE_COLORS
 
 class Block:
     def __init__(self, x, y, shape):
         self.x = x
         self.y = y
         self.shape = shape
-        self.color = shape_colors[shape]
+        self.color = SHAPE_COLORS[shape]
         self.rotation = 0
