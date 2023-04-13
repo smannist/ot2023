@@ -1,5 +1,5 @@
 import pygame
-from variables import PYGAME_WIDTH, PYGAME_HEIGHT
+from config import PYGAME_WIDTH, PYGAME_HEIGHT
 from game_loop import GameLoop
 from renderer import Renderer
 from game_grid import GameGrid

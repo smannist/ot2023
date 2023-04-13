@@ -1,5 +1,5 @@
 import pygame
-from variables import PYGAME_WIDTH, PYGAME_HEIGHT, TETRIS_WIDTH, TETRIS_HEIGHT
+from config import PYGAME_WIDTH, PYGAME_HEIGHT, TETRIS_WIDTH, TETRIS_HEIGHT
 
 # colors are temporary until I find a color scheme that looks nice
 colors = {"black": (0,0,0),
