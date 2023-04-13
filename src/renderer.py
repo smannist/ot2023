@@ -19,13 +19,13 @@ class Renderer:
     def render_grid(self, surface, dx, dy, block_size=30):
         self.render_background()
 
-        for i in range(self.grid.shape[0]):
-            for j in range(self.grid.shape[1]):
-                if (i + j) % 2 == 0:
+        for row in range(self.grid.shape[0]):
+            for col in range(self.grid.shape[1]):
+                if (row + col) % 2 == 0:
                     color = colors["dark_grey"]
                 else:
                     color = colors["light_grey"]
-                grid_rectangle = pygame.Rect(dx + j * block_size, dy + i * block_size, block_size, block_size)
+                grid_rectangle = pygame.Rect(dx + col * block_size, dy + row * block_size, block_size, block_size)
                 pygame.draw.rect(surface, color, grid_rectangle)
 
     def render_grid_border(self, surface, dx, dy, border_width=5):
