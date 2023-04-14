@@ -1,32 +1,28 @@
 import pygame
-from config import PYGAME_WIDTH, PYGAME_HEIGHT, TETRIS_WIDTH, TETRIS_HEIGHT, BACKGROUND_COLORS
+from config import TETRIS_WIDTH, TETRIS_HEIGHT, BACKGROUND_COLORS, CENTER_X, CENTER_Y
 
 class Renderer:
     def __init__(self, display, game_grid):
         self.display = display
-        self.grid = game_grid.grid
+        self.game_grid = game_grid
 
-    def render_background(self):
+    def render_all(self, display):
+        self._render_background()
+        self._render_full_board(display)
+
+    def _render_background(self):
         self.display.fill((BACKGROUND_COLORS["cyan"]))
 
-    def render_board(self, surface):
-        dx = (PYGAME_WIDTH - TETRIS_WIDTH) // 2   
-        dy = (PYGAME_HEIGHT - TETRIS_HEIGHT) // 2
-        self.render_grid(surface, dx, dy)
-        self.render_grid_border(surface, dx, dy)
+    def _render_full_board(self, display):
+        self._render_grid(display, CENTER_X, CENTER_Y)
+        self._render_grid_border(display, CENTER_X, CENTER_Y)
 
-    def render_grid(self, surface, dx, dy, block_size=30):
-        self.render_background()
-
-        for row in range(self.grid.shape[0]):
-            for col in range(self.grid.shape[1]):
-                if (row + col) % 2 == 0:
-                    color = BACKGROUND_COLORS["dark_grey"]
-                else:
-                    color = BACKGROUND_COLORS["light_grey"]
+    def _render_grid(self, display, dx, dy, block_size=30): ## update positions dictionary here? or think other ways?
+        for row in range(self.game_grid.grid.shape[0]):
+            for col in range(self.game_grid.grid.shape[1]):
                 grid_rectangle = pygame.Rect(dx + col * block_size, dy + row * block_size, block_size, block_size)
-                pygame.draw.rect(surface, color, grid_rectangle)
+                pygame.draw.rect(display, self.game_grid.grid[row][col], grid_rectangle)
 
-    def render_grid_border(self, surface, dx, dy, border_width=5):
-        border_rect = pygame.Rect(dx - border_width, dy - border_width, TETRIS_WIDTH + 30 + border_width, TETRIS_HEIGHT + 40)
-        pygame.draw.rect(surface, BACKGROUND_COLORS["black"], border_rect, border_width)
+    def _render_grid_border(self, display, dx, dy, border_width=5):
+        border_rectangle = pygame.Rect(dx - border_width, dy - border_width, TETRIS_WIDTH + 30 + border_width, TETRIS_HEIGHT + 40)
+        pygame.draw.rect(display, BACKGROUND_COLORS["black"], border_rectangle, border_width)
