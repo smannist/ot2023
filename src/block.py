@@ -5,7 +5,7 @@ class Block:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.shape_info_list = random.choice(SHAPES)[0]
+        self.shape_info_list = random.choice(SHAPES)
         self.shape = self.shape_info_list[0]
         self.color = self.shape_info_list[1]
         self.rotation = 0
