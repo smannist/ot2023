@@ -10,7 +10,19 @@ class GameLoop:
         clock = pygame.time.Clock()
 
         while True:
-            for event in pygame.event.get():
+
+            if self._handle_events() == False:
+                break
+
+            self.renderer.render_all(self.display)
+
+            self.renderer.game_grid.grid[0][1] = (0,255,0) # testing, remove later
+
+            pygame.display.update()
+            clock.tick(60)
+
+    def _handle_events(self):
+        for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
 
@@ -24,10 +36,5 @@ class GameLoop:
                     if event.key == pygame.K_RIGHT:
                         if self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.x += 1
-
-            self.renderer.render_all(self.display)
-
-            self.renderer.game_grid.grid[0][1] = (0,255,0) # testing, remove later
-
-            pygame.display.update()
-            clock.tick(60)
+                elif event.type == pygame.QUIT:
+                    return False
