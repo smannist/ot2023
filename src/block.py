@@ -1,4 +1,5 @@
 import random
+import numpy as np
 from block_shapes import SHAPES
 
 class Block:
@@ -32,3 +33,8 @@ class Block:
 
     def move_right(self):
         self.x += 1
+
+    def rotate(self):
+        rotated_shape = np.transpose(self.shape)
+        rotated_shape = np.flip(rotated_shape, axis=0)
+        self.shape = rotated_shape
