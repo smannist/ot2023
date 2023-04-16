@@ -9,7 +9,6 @@ class Block:
         self.shape_info_list = random.choice(SHAPES)
         self.shape = self.shape_info_list[0]
         self.color = self.shape_info_list[1]
-        self.rotation = 0
 
     def shape_to_coordinates(self):
         coordinates = []
