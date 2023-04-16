@@ -44,7 +44,6 @@ class GameLoop:
                     if event.key == pygame.K_UP:
                         if self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.rotate()
-                            self.delay_timer = 500
                     elif event.key == pygame.K_DOWN:
                         if self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.move_down()
