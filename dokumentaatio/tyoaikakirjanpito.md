@@ -7,4 +7,5 @@
 | 4.4.  | 5    | Lisää luokkien suunnittelua, alustava ruudukko tetrikselle, testausta ja tehtävät 4-7      |
 | 13.4. | 3    | Config tiedosto, yleistä suunnittelua siitä miten saisin esitettyä palikat pelissä         |
 | 14.4. | 6    | Paljon refaktorointia ja luokkien uudelleen rakennusta, kaikki funktiot ei vieläkään toimi |
-|  yht  | 17.5 |                                                                                            |
+| 16.4. | 6    | Uusia palikoita, palikoiden liikuttaminen, palikoiden pudottamismekanismi                  |
+|  yht  | 23.5 |                                                                                            |
