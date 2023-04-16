@@ -23,3 +23,12 @@ class Block:
             coordinates[i] = (coordinates[i][0] - 2, coordinates[i][1] - 4)
 
         return coordinates
+
+    def move_down(self):
+        self.y += 1
+
+    def move_left(self):
+        self.x -= 1
+
+    def move_right(self):
+        self.x += 1

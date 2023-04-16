@@ -1,4 +1,5 @@
 import pygame
+from block import Block
 
 class GameLoop:
     def __init__(self, renderer, display, block):
@@ -25,13 +26,19 @@ class GameLoop:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:
                         if self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.y += 1
+                            self.current_block.move_down()
                     if event.key == pygame.K_LEFT:
                         if self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.x -= 1
+                            self.current_block.move_left()
                     if event.key == pygame.K_RIGHT:
                         if self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.x += 1
+                            self.current_block.move_right()
                 elif event.type == pygame.QUIT:
                     return False
         return True
+
+    def move_block(self, block_coordinates):
+        for i in range(len(block_coordinates)):
+                x, y = block_coordinates[i]
+                if y > -1:
+                    self.renderer.game_grid.grid[y][x] = self.current_block.color
