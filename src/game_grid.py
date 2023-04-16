@@ -23,12 +23,13 @@ class GameGrid:
         for row in range(self.grid.shape[0]):
             for col in range(self.grid.shape[1]):
                 if (row, col) in positions:
-                    self.grid[row][col] = positions[(row, col)] # color of the block e.g (x,y) --> (1,2): RGB --> (255,0,0), not used yet (and not sure if works anyway)
+                    self.grid[row][col] = positions[(row, col)]
 
     def is_valid_move(self, block):
-        valid_moves = [(j, i) for i in range(GAME_GRID_ROWS) for j in range(GAME_GRID_COLUMNS) if np.array_equal(self.grid[i][j], np.array([0, 0, 0]))]
+        valid_moves = [(j, i) for i in range(GAME_GRID_ROWS) for j in range(GAME_GRID_COLUMNS)]
+        block_positions = block.shape_to_coordinates()
+
         print(valid_moves)
-        block_positions = block.shape_to_position()
 
         for position in block_positions:
             print(position)
