@@ -20,14 +20,9 @@ class GameGrid:
         return grid
 
     def is_valid_move(self, block):
-        valid_moves = [(j, i) for i in range(GAME_GRID_ROWS) for j in range(GAME_GRID_COLUMNS)]
-        block_positions = block.shape_to_coordinates()
-
-        for position in block_positions:
-            if position not in valid_moves:
-                return False
-
-        return True
+        valid_moves = set((j, i) for i in range(GAME_GRID_ROWS) for j in range(GAME_GRID_COLUMNS))
+        block_positions = set(block.shape_to_coordinates())
+        return block_positions.issubset(valid_moves)
 
     def reset_cell_colors(self, previous_block_coordinates, block_coordinates):
         for row, col in previous_block_coordinates:

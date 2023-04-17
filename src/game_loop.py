@@ -11,7 +11,6 @@ class GameLoop:
         self.previous_block_coordinates = [(0,0), (0,0), (0,0), (0,0)]
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
-
         self.key_pressed = False
 
     def start(self):
@@ -27,8 +26,6 @@ class GameLoop:
 
             self.renderer.render_all(self.display)
 
-            print(self.current_block.x, self.current_block.y)
-
             pygame.display.update()
 
     def _handle_events(self):
@@ -41,17 +38,19 @@ class GameLoop:
                     self.key_pressed = True
                     self.previous_block_coordinates = self.current_block.shape_to_coordinates()
                     if event.key == pygame.K_UP:
-                        if self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.rotate()
+                        self.current_block.rotate()
                     elif event.key == pygame.K_DOWN:
-                        if self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.move_down()
+                        self.current_block.move_down()
+                        if not self.renderer.game_grid.is_valid_move(self.current_block):
+                            self.current_block.move_up()
                     elif event.key == pygame.K_LEFT:
-                        if self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.move_left()
-                    elif event.key == pygame.K_RIGHT:
-                        if self.renderer.game_grid.is_valid_move(self.current_block):
+                        self.current_block.move_left()
+                        if not self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.move_right()
+                    elif event.key == pygame.K_RIGHT:
+                        self.current_block.move_right()
+                        if not self.renderer.game_grid.is_valid_move(self.current_block):
+                            self.current_block.move_left()
             elif event.type == pygame.KEYUP:
                 self.key_pressed = False
         return True

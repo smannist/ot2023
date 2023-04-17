@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from block_shapes import SHAPES
+from config import GAME_GRID_COLUMNS, GAME_GRID_ROWS
 
 class Block:
     def __init__(self, x, y):
@@ -32,6 +33,9 @@ class Block:
 
     def move_right(self):
         self.x += 1
+    
+    def move_up(self):
+        self.y -= 1
 
     def rotate(self):
         rotated_shape = np.transpose(self.shape)
