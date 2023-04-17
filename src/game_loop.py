@@ -13,7 +13,6 @@ class GameLoop:
         self.fall_speed = FALL_SPEED
 
         self.key_pressed = False
-        self.block_dropped = False
 
     def start(self):
         while True:
@@ -22,8 +21,8 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
-            self._drop_block()
             self._block_moved(block_coordinates)
+            self._drop_block(block_coordinates)
             self._update_elapsed_time()
 
             self.renderer.render_all(self.display)
@@ -38,7 +37,7 @@ class GameLoop:
                 pygame.quit()
                 return False
             elif event.type == pygame.KEYDOWN:
-                if not self.key_pressed and not self.block_dropped:
+                if not self.key_pressed:
                     self.key_pressed = True
                     self.previous_block_coordinates = self.current_block.shape_to_coordinates()
                     if event.key == pygame.K_UP:
@@ -58,19 +57,18 @@ class GameLoop:
         return True
 
     def _block_moved(self, current_block_coordinates):
+        self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, current_block_coordinates)
         for i in range(len(current_block_coordinates)):
             x, y = current_block_coordinates[i]
             self.renderer.game_grid.grid[y][x] = self.current_block.color
-            self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, current_block_coordinates)
+        self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, current_block_coordinates)
 
-    def _drop_block(self):
+    def _drop_block(self, current_block_coordinates):
         if self.fall_time/1000 >= self.fall_speed:
-                self.block_dropped = True
+                self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, current_block_coordinates)
                 self.fall_time = 0
                 self.previous_block_coordinates = self.current_block.shape_to_coordinates()
                 self.current_block.move_down()
-                print(self.block_dropped)
-                self.block_dropped = False
 
     def _update_elapsed_time(self):
         current_tick = pygame.time.get_ticks()
