@@ -5,7 +5,6 @@ class GameLoop:
     def __init__(self, renderer, display, block):
         self.renderer = renderer
         self.display = display
-        self.clock = pygame.time.Clock()
         self.previous_tick = pygame.time.get_ticks()
         self.current_block = block
         self.previous_block_coordinates = [(0,0), (0,0), (0,0), (0,0)]
