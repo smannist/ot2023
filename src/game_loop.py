@@ -12,9 +12,12 @@ class GameLoop:
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
         self.key_pressed = False
+        self.previous_rotation = self.current_block.shape
 
     def start(self):
         while True:
+            self.renderer.render_all(self.display)
+
             if not self._handle_events():
                 break
 
@@ -23,8 +26,6 @@ class GameLoop:
             self._block_moved(block_coordinates)
             self._drop_block(block_coordinates)
             self._update_elapsed_time()
-
-            self.renderer.render_all(self.display)
 
             pygame.display.update()
 
@@ -38,7 +39,10 @@ class GameLoop:
                     self.key_pressed = True
                     self.previous_block_coordinates = self.current_block.shape_to_coordinates()
                     if event.key == pygame.K_UP:
+                        self.previous_rotation = self.current_block.shape
                         self.current_block.rotate()
+                        if not self.renderer.game_grid.is_valid_move(self.current_block):
+                            self.current_block.shape = self.previous_rotation
                     elif event.key == pygame.K_DOWN:
                         self.current_block.move_down()
                         if not self.renderer.game_grid.is_valid_move(self.current_block):
