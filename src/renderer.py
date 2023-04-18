@@ -23,7 +23,8 @@ class Renderer:
 
                 grid_rectangle = pygame.Rect(center_x + col * block_size, \
                                              center_y + row * block_size, \
-                                             block_size, block_size)
+                                             block_size, \
+                                             block_size)
 
                 pygame.draw.rect(display, self.game_grid.grid[row][col], grid_rectangle)
 
