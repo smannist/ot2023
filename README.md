@@ -10,7 +10,7 @@ Legendaarinen Tetris pygame kirjastolla
 
 ## Nykytila
 
-Tällä hetkellä pelissä on peruspalitkat, palikat putoavat ja niitä voi käännellä. Muu toiminnalisuus rakennetaan ensiviikkoon mennessä.
+Tällä hetkellä pelissä on peruspalikat, palikat putoavat ja niitä voi käännellä. Muu toiminnalisuus rakennetaan ensiviikkoon mennessä.
 
 ## Asennus
 
