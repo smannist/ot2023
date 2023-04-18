@@ -31,46 +31,54 @@ class GameLoop:
 
     def _handle_events(self):
         for event in pygame.event.get():
-
             if event.type == QUIT:
                 pygame.quit()
                 return False
-
             if event.type == KEYDOWN:
-                if not self.key_pressed:
-                    self.key_pressed = True
-                    self.previous_block_coordinates = self.current_block.shape_to_coordinates()
-
-                    if event.key == K_UP:
-                        self.previous_rotation = self.current_block.shape
-                        self.current_block.rotate()
-                        if not self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.shape = self.previous_rotation
-
-                    elif event.key == K_DOWN:
-                        self.current_block.move_down()
-                        if not self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.move_up()
-
-                    elif event.key == K_LEFT:
-                        self.current_block.move_left()
-                        if not self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.move_right()
-
-                    elif event.key == K_RIGHT:
-                        self.current_block.move_right()
-                        if not self.renderer.game_grid.is_valid_move(self.current_block):
-                            self.current_block.move_left()
-
+                self._handle_keydown(event)
             elif event.type == KEYUP:
                 self.key_pressed = False
-
         return True
 
-    def _block_moved(self, current_block_coordinates):
-        self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates,
-                                                  current_block_coordinates)
+    def _handle_keydown(self, event):
+        if not self.key_pressed:
+            self.key_pressed = True
+            self.previous_block_coordinates = self.current_block.shape_to_coordinates()
+            if event.key == K_UP:
+                self._handle_rotate_block()
+            elif event.key == K_DOWN:
+                self._handle_move_block_down()
+            elif event.key == K_LEFT:
+                self._handle_move_block_left()
+            elif event.key == K_RIGHT:
+                self._handle_move_block_right()
 
+    def _handle_rotate_block(self):
+        self.previous_rotation = self.current_block.shape
+        self.current_block.rotate()
+
+        if not self.renderer.game_grid.is_valid_move(self.current_block):
+            self.current_block.shape = self.previous_rotation
+
+    def _handle_move_block_down(self):
+        self.current_block.move_down()
+
+        if not self.renderer.game_grid.is_valid_move(self.current_block):
+            self.current_block.move_up()
+
+    def _handle_move_block_left(self):
+        self.current_block.move_left()
+
+        if not self.renderer.game_grid.is_valid_move(self.current_block):
+            self.current_block.move_right()
+
+    def _handle_move_block_right(self):
+        self.current_block.move_right()
+
+        if not self.renderer.game_grid.is_valid_move(self.current_block):
+            self.current_block.move_left()
+
+    def _block_moved(self, current_block_coordinates):
         for i in range(len(current_block_coordinates)):
             x, y = current_block_coordinates[i]
             self.renderer.game_grid.grid[y][x] = self.current_block.color
