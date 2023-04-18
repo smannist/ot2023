@@ -36,7 +36,7 @@ poetry run invoke test
 poetry run invoke coverage-report
 ```
 
-3. Testikattavuus raportin aukaiseminen selaimeen (Linux)
+3. Testikattavuusraportin aukaiseminen selaimeen (Linux)
 
 ```bash
 poetry run invoke open-report
