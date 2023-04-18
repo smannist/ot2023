@@ -30,32 +30,40 @@ class GameLoop:
 
     def _handle_events(self):
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return False
+
             elif event.type == pygame.KEYDOWN:
                 if not self.key_pressed:
                     self.key_pressed = True
                     self.previous_block_coordinates = self.current_block.shape_to_coordinates()
+
                     if event.key == pygame.K_UP:
                         self.previous_rotation = self.current_block.shape
                         self.current_block.rotate()
                         if not self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.shape = self.previous_rotation
+
                     elif event.key == pygame.K_DOWN:
                         self.current_block.move_down()
                         if not self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.move_up()
+
                     elif event.key == pygame.K_LEFT:
                         self.current_block.move_left()
                         if not self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.move_right()
+
                     elif event.key == pygame.K_RIGHT:
                         self.current_block.move_right()
                         if not self.renderer.game_grid.is_valid_move(self.current_block):
                             self.current_block.move_left()
+
             elif event.type == pygame.KEYUP:
                 self.key_pressed = False
+
         return True
 
     def _block_moved(self, current_block_coordinates):
