@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+from pygame.locals import KEYDOWN, KEYUP, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from config import FALL_TIME, FALL_SPEED
 
 class GameLoop:
