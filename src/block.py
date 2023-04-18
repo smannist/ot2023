@@ -1,7 +1,6 @@
 import random
 import numpy as np
 from block_shapes import SHAPES
-from config import GAME_GRID_COLUMNS, GAME_GRID_ROWS
 
 class Block:
     def __init__(self, x, y):
@@ -15,13 +14,13 @@ class Block:
         coordinates = []
         block_shape_list = self.shape.tolist()
 
-        for i in range(len(block_shape_list)):
-            for j in range(len(block_shape_list[0])):
-                if block_shape_list[i][j] == 1:
+        for i, row in enumerate(block_shape_list):
+            for j, col in enumerate(row):
+                if col == 1:
                     coordinates.append((self.x + j, self.y + i))
 
-        for i in range(len(coordinates)):
-            coordinates[i] = (coordinates[i][0] - 2, coordinates[i][1] - 4)
+        for i, coord in enumerate(coordinates):
+            coordinates[i] = (coord[0] - 2, coord[1] - 4)
 
         return coordinates
 
