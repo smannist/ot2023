@@ -9,5 +9,5 @@
 | 14.4. | 6    | Paljon refaktorointia ja luokkien uudelleen rakennusta, kaikki funktiot ei vieläkään toimi |
 | 16.4. | 6    | Uusia palikoita, palikoiden liikuttaminen, palikoiden pudottamismekanismi                  |
 | 17.4. | 3    | Koodin korjailua, palikoiden ei pitäisi nyt eksyä ruudukolta                               |
-| 18.4. | 5    | Pylintin tarjomat korjausehdotukset, luokkakaavio, testejä                                 |
+| 18.4. | 5    | Pylintin tarjoamat korjausehdotukset, luokkakaavio, testejä                                |
 |  yht  | 31.5 |                                                                                            |
