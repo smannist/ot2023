@@ -44,4 +44,17 @@
 
   - Muodon muuttaminen koordinaateiksi joita voidaan sitten käyttää ruudukon värittämiseen
   - Toiminnallisuus palikoiden liikuttamiseksi
-  - Palikan rotaatio funktio
+  - Palikan rotaatiofunktio
+
+- Testattu:
+
+  - Block luokka:
+
+    - X ja y-koordinaatit päivittyvät kuten pitää jos palikkaa liikutettaan
+    - Rotaation kutsuminen kääntää palikkaa oikein (käytännössä tämä on matriisin transpoosi)
+
+  - GameGrid luokka:
+    - Kaikki edelliset testit muokattu vastaamaan uutta rakennetta
+    - Hyväksyttävät palikan siirrot sallitaan
+    - Hyväksymättömät palikan siirrot hylätään
+    - Värit resetoidaan oletettavasti kun palikkaa liikutetaan ruudukossa
