@@ -8,4 +8,5 @@
 | 13.4. | 3    | Config tiedosto, yleistä suunnittelua siitä miten saisin esitettyä palikat pelissä         |
 | 14.4. | 6    | Paljon refaktorointia ja luokkien uudelleen rakennusta, kaikki funktiot ei vieläkään toimi |
 | 16.4. | 6    | Uusia palikoita, palikoiden liikuttaminen, palikoiden pudottamismekanismi                  |
-|  yht  | 23.5 |                                                                                            |
+| 17.4. | 3    | Koodin korjailua, palikoiden ei pitäisi nyt eksyä ruudukolta                               |
+|  yht  | 26.5 |                                                                                            |
