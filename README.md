@@ -8,6 +8,10 @@ Legendaarinen Tetris pygame kirjastolla
 - [Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 - [Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
 
+## Nykytila
+
+Tällä hetkellä pelissä on peruspalitkat, palikat putoavat ja niitä voi käännellä. Muu toiminnalisuus rakennetaan ensiviikkoon mennessä.
+
 ## Asennus
 
 1. Asenna riipuvuudet komennolla:
