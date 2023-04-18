@@ -7,6 +7,7 @@ from src.config import BACKGROUND_COLORS
 class TestGameGrid(unittest.TestCase):
     def setUp(self):
         self.game_grid = GameGrid()
+        self.block = Block(5,3)
 
     def test_game_grid_is_initialized_with_correct_dimensions(self):
         self.assertEqual(self.game_grid.grid.shape, (21, 11, 3))
@@ -26,3 +27,17 @@ class TestGameGrid(unittest.TestCase):
         block = Block(15, 3)
         result = self.game_grid.is_valid_move(block)
         self.assertFalse(result)
+
+    def test_cell_colors_on_the_grid_are_reset_correcty(self):
+        current_block_coordinates = self.block.shape_to_coordinates()
+        previous_block_coordinates = self.block.shape_to_coordinates()
+
+        self.block.move_down()
+
+        current_block_coordinates = self.block.shape_to_coordinates()
+
+        self.game_grid.reset_cell_colors(previous_block_coordinates, current_block_coordinates)
+
+        expected_colors = [BACKGROUND_COLORS["dark_grey"] if (coord[0] + coord[1]) % 2 == 0 else BACKGROUND_COLORS["light_grey"] for coord in previous_block_coordinates]
+        actual_colors = [self.game_grid.grid[cells[1]][cells[0]] for cells in previous_block_coordinates]
+        self.assertTrue(np.array_equal(expected_colors, actual_colors))
