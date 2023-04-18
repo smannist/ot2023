@@ -34,7 +34,7 @@
   - Palikat voivat nyt pudota
   - Palikoiden liikuttaminen ruudukossa on nyt mahdollista
   - Event handler jaettu pienemmiksi funtioiksi
-  - Useita tietuita lisätty mm. edellisen rotaation tallennus, sillä pelin ominaisuudet vaativat niitä
+  - Useita tietueita lisätty mm. edellisen rotaation tallennus, sillä pelin ominaisuudet vaativat niitä
 
 - Renderer luokkaa muokattu:
 
