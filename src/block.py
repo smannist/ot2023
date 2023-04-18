@@ -33,7 +33,7 @@ class Block:
 
     def move_right(self):
         self.x += 1
-    
+
     def move_up(self):
         self.y -= 1
 
