@@ -9,8 +9,8 @@
  
  direction LR
  
-      Block -- GameGrid
-      GameGrid -- GameLoop
+      Block -- GameLoop
+      GameLoop -- GameGrid
       
       
       class Block{
