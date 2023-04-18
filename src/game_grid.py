@@ -21,7 +21,7 @@ class GameGrid:
 
     def is_valid_move(self, block):
         valid_moves = set((col, row) for row in range(GAME_GRID_ROWS) \
-                           for col in range(GAME_GRID_COLUMNS))
+                                     for col in range(GAME_GRID_COLUMNS))
         block_positions = set(block.shape_to_coordinates())
         return block_positions.issubset(valid_moves)
 
