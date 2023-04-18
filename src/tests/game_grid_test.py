@@ -1,6 +1,7 @@
 import unittest
 import numpy as np
 from src.game_grid import GameGrid
+from src.block import Block
 from src.config import BACKGROUND_COLORS
 
 class TestGameGrid(unittest.TestCase):
@@ -15,3 +16,13 @@ class TestGameGrid(unittest.TestCase):
         expected_colors = np.array([BACKGROUND_COLORS["dark_grey"] if (row + col) % 2 == 0 else BACKGROUND_COLORS["light_grey"] \
                                                 for row in range(self.game_grid.rows) for col in range(self.game_grid.columns)])
         self.assertTrue(np.array_equal(grid_colors, expected_colors))
+
+    def test_valid_block_moves_are_accepted(self):
+        block = Block(5, 3)
+        result = self.game_grid.is_valid_move(block)
+        self.assertTrue(result)
+
+    def test_invalid_block_moves_are_rejected(self):
+        block = Block(15, 3)
+        result = self.game_grid.is_valid_move(block)
+        self.assertFalse(result)
