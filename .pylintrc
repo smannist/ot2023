@@ -196,7 +196,8 @@ ignored-classes=optparse.Values,thread._local,_thread._local
 # and thus existing member attributes cannot be deduced by static analysis). It
 # supports qualified module names, as well as Unix pattern matching.
 
-# pylint has problems recognising the imports from pygame.locals
+# pylint has problems recognising imports from pygame.locals (KEYUP, K_UP, etc.) and I could not find another workaround.     
+# instructors can disable the ignore and see the problem for themselves.
 ignored-modules=pygame.locals
 
 # Show a hint with possible names when a member name was not found. The aspect
