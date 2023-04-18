@@ -39,5 +39,5 @@ class TestGameGrid(unittest.TestCase):
         self.game_grid.reset_cell_colors(previous_block_coordinates, current_block_coordinates)
 
         expected_colors = [BACKGROUND_COLORS["dark_grey"] if (coord[0] + coord[1]) % 2 == 0 else BACKGROUND_COLORS["light_grey"] for coord in previous_block_coordinates]
-        actual_colors = [self.game_grid.grid[cells[1]][cells[0]] for cells in previous_block_coordinates]
+        actual_colors = [self.game_grid.grid[coord[1]][coord[0]] for coord in previous_block_coordinates]
         self.assertTrue(np.array_equal(expected_colors, actual_colors))
