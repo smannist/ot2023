@@ -17,7 +17,7 @@ Graafinen käyttöliittymä Pygame -kirjastolla.
 Tetriksestä tuttu pelitila:
 
 - Yksinpeli
-- Erikokoisia ja muotoisia palikoita
+- [x] Erikokoisia ja muotoisia palikoita
 - Tarkoituksena muodostaa suora pelin alatasolle
   - Palikat hajoavat suoran muodostuessa
     - Käyttäjä ansaitsee pisteitä
