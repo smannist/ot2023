@@ -6,6 +6,7 @@ Legendaarinen Tetris pygame kirjastolla
 
 - [Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+- [Arkkitehtuurikuvaus](https://github.com/smannist/ot2023/blob/master/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
 
 ## Nykytila
