@@ -16,3 +16,32 @@
 
   - GameGrid luokka muodostaa oikean kokoisen matriisin pelille
   - GameGrid luokka muodostaa matriisin, joka koostuu vain nollista
+
+## Viikko 4
+
+- Lisätty config -tiedosto, joka sisältää pelin dimensiot, käytettävät värit yms.
+- Lisätty block_shape -tiedosto, joka sisältää palikoiden muodot NumPy arrayinä sekä palikoiden värit
+
+- GameGrid luokkaa muokattu:
+
+  - Soluissa säilytetään tieto nyt väreinä
+    - Väri on aina joko alkuperäisen ruudukon väri tai sitten pelissä olevan palikan väri
+  - Sallittavan siirron tunnistaminen
+  - Värien palauttaminen ennalleen
+
+- GameLoop luokkaa muokattu:
+
+  - Palikat voivat nyt pudota
+  - Palikoiden liikuttaminen ruudukossa on nyt mahdollista
+  - Event handler jaettu pienemmiksi funtioiksi
+  - Useita tietuita lisätty mm. edellisen rotaation tallennus, sillä pelin ominaisuudet vaativat niitä
+
+- Renderer luokkaa muokattu:
+
+  - Renderer piirtää nyt oikeanlaisesti ruudukon GameGridin datan avulla, eikä pelkästää GameGridin dimensioiden perusteella
+
+- Block luokkaa muokattu:
+
+  - Muodon muuttaminen koordinaateiksi joita voidaan sitten käyttää ruudukon värittämiseen
+  - Toiminnallisuus palikoiden liikuttamiseksi
+  - Palikan rotaatio funktio
