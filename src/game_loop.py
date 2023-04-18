@@ -79,9 +79,8 @@ class GameLoop:
             self.current_block.move_left()
 
     def _block_moved(self, current_block_coordinates):
-        for i in range(len(current_block_coordinates)):
-            x, y = current_block_coordinates[i]
-            self.renderer.game_grid.grid[y][x] = self.current_block.color
+        for _, (row, col) in enumerate(current_block_coordinates):
+            self.renderer.game_grid.grid[col][row] = self.current_block.color
 
         self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
                                                   current_block_coordinates)
