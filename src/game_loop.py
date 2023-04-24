@@ -82,7 +82,8 @@ class GameLoop:
 
     def _block_movement(self, current_block_coordinates):
         for _, (row, col) in enumerate(current_block_coordinates):
-            if self._block_hit_bottom(col, current_block_coordinates):
+            if self._collided_with_bottom(col, current_block_coordinates) \
+                    or self._collided_with_block(current_block_coordinates, self.placed_blocks):
                 self._spawn_next_block()
                 break
             self.renderer.game_grid.grid[col][row] = self.current_block.color
@@ -102,14 +103,24 @@ class GameLoop:
             self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
 
-    def _block_hit_bottom(self, col, current_block_coordinates):
+    def _collided_with_bottom(self, col, current_block_coordinates):
         if col == self.renderer.game_grid.grid.shape[0]-1:
-            for r, c in current_block_coordinates:
-                self.placed_blocks[(r, c)] = self.current_block.color
-            for (r, c), color in self.placed_blocks.items():
-                self.renderer.game_grid.grid[c][r] = color
+            self._place_current_block(current_block_coordinates)
             return True
         return False
+
+    def _collided_with_block(self, current_block_coordinates, placed_blocks):
+        current_block_set = set(current_block_coordinates)
+        if current_block_set.intersection(placed_blocks):
+            self._place_current_block(current_block_coordinates, c_fact=1)
+            return True
+        return False
+
+    def _place_current_block(self, current_block_coordinates, c_fact=0):
+        for r, c in current_block_coordinates:
+            self.placed_blocks[(r, c-c_fact)] = self.current_block.color
+        for (r, c), color in self.placed_blocks.items():
+            self.renderer.game_grid.grid[c][r] = color
 
     def _spawn_next_block(self):
         self.current_block = Block(5,3)
