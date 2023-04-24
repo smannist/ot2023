@@ -25,9 +25,9 @@ class GameGrid:
         block_positions = set(block.shape_to_coordinates())
         return block_positions.issubset(valid_moves)
 
-    def reset_cell_colors(self, previous_block_coordinates, block_coordinates):
+    def reset_cell_colors(self, previous_block_coordinates, block_coordinates, placed_blocks):
         for row, col in previous_block_coordinates:
-            if (row, col) not in block_coordinates:
+            if (row, col) not in block_coordinates and (row, col) not in placed_blocks:
                 if (row + col) % 2 == 0:
                     self.grid[col][row] = BACKGROUND_COLORS["dark_grey"]
                 else:

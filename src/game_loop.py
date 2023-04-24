@@ -1,4 +1,5 @@
 import pygame
+from block import Block
 from pygame.locals import KEYDOWN, KEYUP, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from config import FALL_TIME, FALL_SPEED
 
@@ -13,6 +14,7 @@ class GameLoop:
         self.fall_speed = FALL_SPEED
         self.key_pressed = False
         self.previous_rotation = self.current_block.shape
+        self.placed_blocks = {}
 
     def start(self):
         while True:
@@ -80,18 +82,37 @@ class GameLoop:
 
     def _block_moved(self, current_block_coordinates):
         for _, (row, col) in enumerate(current_block_coordinates):
+            if self._block_hit_bottom(row, col, current_block_coordinates):
+                break
             self.renderer.game_grid.grid[col][row] = self.current_block.color
 
         self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
-                                                  current_block_coordinates)
+                                                  current_block_coordinates,
+                                                  self.placed_blocks)
 
     def _drop_block(self, current_block_coordinates):
         if self.fall_time/1000 >= self.fall_speed:
+
             self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
-                                                          current_block_coordinates)
+                                                      current_block_coordinates,
+                                                      self.placed_blocks)
+
             self.fall_time = 0
             self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
+
+    def _block_hit_bottom(self, row, col, current_block_coordinates):
+        if col == self.renderer.game_grid.grid.shape[0]-1:
+                for row, col in current_block_coordinates:
+                    self.placed_blocks[(row, col)] = self.current_block.color
+                for (row, col), color in self.placed_blocks.items():
+                    self.renderer.game_grid.grid[col][row] = color
+                self._spawn_next_block()
+                return True
+        return False
+
+    def _spawn_next_block(self):
+        self.current_block = Block(5,3)
 
     def _update_elapsed_time(self):
         current_tick = pygame.time.get_ticks()
