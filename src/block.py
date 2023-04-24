@@ -11,17 +11,8 @@ class Block:
         self.color = self.shape_info_list[1]
 
     def shape_to_coordinates(self):
-        coordinates = []
-        block_shape_list = self.shape.tolist()
-
-        for i, row in enumerate(block_shape_list):
-            for j, col in enumerate(row):
-                if col == 1:
-                    coordinates.append((self.x + j, self.y + i))
-
-        for i, coord in enumerate(coordinates):
-            coordinates[i] = (coord[0] - 2, coord[1] - 4)
-
+        row, col = np.where(self.shape == 1)
+        coordinates = list(zip(self.x + col - 2, self.y + row - 4))
         return coordinates
 
     def move_down(self):

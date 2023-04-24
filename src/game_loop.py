@@ -25,13 +25,14 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
-            self._block_movement(block_coordinates)
-            self._update_elapsed_time()
+            self._block_dropping()
 
-            if not self._block_dropping():
-                self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
+            self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
                                                       block_coordinates, \
                                                       self.placed_blocks)
+
+            self._block_movement(block_coordinates)
+            self._update_elapsed_time()
 
             pygame.display.update()
 
@@ -97,8 +98,6 @@ class GameLoop:
             self.fall_time = 0
             self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
-            return True
-        return False
 
     def _collided_with_bottom(self, col, current_block_coordinates):
         if col == self.renderer.game_grid.grid.shape[0]-1:

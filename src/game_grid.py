@@ -8,7 +8,7 @@ class GameGrid:
         self.grid = self._initialize_grid()
 
     def _initialize_grid(self):
-        grid = np.full((self.rows, self.columns, 3), (0, 0, 0), dtype=int)
+        grid = np.full((self.rows, self.columns, 3), (0, 0, 0))
 
         for row in range(grid.shape[0]):
             for col in range(grid.shape[1]):
