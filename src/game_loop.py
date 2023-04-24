@@ -83,6 +83,7 @@ class GameLoop:
     def _block_moved(self, current_block_coordinates):
         for _, (row, col) in enumerate(current_block_coordinates):
             if self._block_hit_bottom(row, col, current_block_coordinates):
+                self._spawn_next_block()
                 break
             self.renderer.game_grid.grid[col][row] = self.current_block.color
 
@@ -107,7 +108,6 @@ class GameLoop:
                     self.placed_blocks[(row, col)] = self.current_block.color
                 for (row, col), color in self.placed_blocks.items():
                     self.renderer.game_grid.grid[col][row] = color
-                self._spawn_next_block()
                 return True
         return False
 
