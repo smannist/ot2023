@@ -1,6 +1,6 @@
 import pygame
-from block import Block
 from pygame.locals import KEYDOWN, KEYUP, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
+from block import Block
 from config import FALL_TIME, FALL_SPEED
 
 class GameLoop:
@@ -82,7 +82,7 @@ class GameLoop:
 
     def _block_moved(self, current_block_coordinates):
         for _, (row, col) in enumerate(current_block_coordinates):
-            if self._block_hit_bottom(row, col, current_block_coordinates):
+            if self._block_hit_bottom(col, current_block_coordinates):
                 self._spawn_next_block()
                 break
             self.renderer.game_grid.grid[col][row] = self.current_block.color
@@ -102,13 +102,13 @@ class GameLoop:
             self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
 
-    def _block_hit_bottom(self, row, col, current_block_coordinates):
+    def _block_hit_bottom(self, col, current_block_coordinates):
         if col == self.renderer.game_grid.grid.shape[0]-1:
-                for row, col in current_block_coordinates:
-                    self.placed_blocks[(row, col)] = self.current_block.color
-                for (row, col), color in self.placed_blocks.items():
-                    self.renderer.game_grid.grid[col][row] = color
-                return True
+            for r, c in current_block_coordinates:
+                self.placed_blocks[(r, c)] = self.current_block.color
+            for (r, c), color in self.placed_blocks.items():
+                self.renderer.game_grid.grid[c][r] = color
+            return True
         return False
 
     def _spawn_next_block(self):
