@@ -25,7 +25,7 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
-            self._block_moved(block_coordinates)
+            self._block_movement(block_coordinates)
             self._drop_block(block_coordinates)
             self._update_elapsed_time()
 
@@ -80,7 +80,7 @@ class GameLoop:
         if not self.renderer.game_grid.is_valid_move(self.current_block):
             self.current_block.move_left()
 
-    def _block_moved(self, current_block_coordinates):
+    def _block_movement(self, current_block_coordinates):
         for _, (row, col) in enumerate(current_block_coordinates):
             if self._block_hit_bottom(col, current_block_coordinates):
                 self._spawn_next_block()
