@@ -26,8 +26,12 @@ class GameLoop:
             block_coordinates = self.current_block.shape_to_coordinates()
 
             self._block_movement(block_coordinates)
-            self._drop_block(block_coordinates)
+            self._drop_block()
             self._update_elapsed_time()
+
+            self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
+                                                      block_coordinates, \
+                                                      self.placed_blocks)
 
             pygame.display.update()
 
@@ -88,17 +92,8 @@ class GameLoop:
                 break
             self.renderer.game_grid.grid[col][row] = self.current_block.color
 
-        self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
-                                                  current_block_coordinates,
-                                                  self.placed_blocks)
-
-    def _drop_block(self, current_block_coordinates):
+    def _drop_block(self):
         if self.fall_time/1000 >= self.fall_speed:
-
-            self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
-                                                      current_block_coordinates,
-                                                      self.placed_blocks)
-
             self.fall_time = 0
             self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
