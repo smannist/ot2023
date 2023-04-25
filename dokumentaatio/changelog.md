@@ -76,5 +76,5 @@
 
 - Testattu:
 
-- GameGrid luokka:
-- Kaikki ruudukot palautuvat odotettavasti
+  - GameGrid luokka:
+    - Kaikki ruudukot palautuvat odotettavasti
