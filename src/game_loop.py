@@ -27,10 +27,7 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
-            self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
-                                                      block_coordinates, \
-                                                      self.placed_blocks)
-
+            self._reset_cells(block_coordinates)
             self._update_elapsed_time()
             self._block_movement(block_coordinates)
             self._block_dropping()
@@ -124,6 +121,11 @@ class GameLoop:
 
     def _spawn_next_block(self):
         self.current_block = Block(5,3)
+
+    def _reset_cells(self, block_coordinates):
+        self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
+                                                      block_coordinates, \
+                                                      self.placed_blocks)
 
     def _update_elapsed_time(self):
         current_tick = pygame.time.get_ticks()
