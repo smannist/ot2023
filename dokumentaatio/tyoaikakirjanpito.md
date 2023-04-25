@@ -10,6 +10,6 @@
 | 16.4. | 6    | Uusia palikoita, palikoiden liikuttaminen, palikoiden pudottamismekanismi                                                                                          |
 | 17.4. | 3    | Koodin korjailua, palikoiden ei pitäisi nyt eksyä ruudukolta                                                                                                       |
 | 18.4. | 5    | Pylintin tarjoamat korjausehdotukset, luokkakaavio, testejä                                                                                                        |
-| 24.4. | 6    | Pudonneiden palikoiden sijainti taulukkoon, lint, palikoiden törmäykset, paljon refaktorointia ja optimointia                                                      |
+| 24.4. | 6    | Pudonneiden palikoiden sijainti sanakirjaan, lint, palikoiden törmäykset, paljon refaktorointia ja optimointia                                                     |
 | 25.4. | 11   | Suurin osa ajasta kului bugien metsästämiseen. Myös rivien tyhjennys on osoittautunut haastavaksi. Lisäksi refaktorointia, yksi testi ja koodin laadun parantelua. |
 |  yht  | 48.5 |                                                                                                                                                                    |
