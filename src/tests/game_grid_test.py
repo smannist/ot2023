@@ -42,3 +42,18 @@ class TestGameGrid(unittest.TestCase):
         expected_colors = [BACKGROUND_COLORS["dark_grey"] if (coord[0] + coord[1]) % 2 == 0 else BACKGROUND_COLORS["light_grey"] for coord in previous_block_coordinates]
         actual_colors = [self.game_grid.grid[coord[1]][coord[0]] for coord in previous_block_coordinates]
         self.assertTrue(np.array_equal(expected_colors, actual_colors))
+
+    def test_reset_all_cell_colors(self):
+
+        placed_blocks = {(2, 0): (255, 0, 0),
+                         (1, 1): (0, 255, 0),
+                         (2, 2): (0, 0, 255)}
+
+        self.game_grid.reset_all_cell_colors(placed_blocks)
+
+        for row in range(self.game_grid.grid.shape[0]):
+            for col in range(self.game_grid.grid.shape[1]):
+                if (row + col) % 2 == 0 and (row, col) not in placed_blocks:
+                    assert np.all(self.game_grid.grid[row][col] == BACKGROUND_COLORS["dark_grey"])
+                elif (row, col) not in placed_blocks:
+                    assert np.all(self.game_grid.grid[row][col] == BACKGROUND_COLORS["light_grey"])
