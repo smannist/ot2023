@@ -58,3 +58,22 @@
     - Hyväksyttävät palikan siirrot sallitaan
     - Hyväksymättömät palikan siirrot hylätään
     - Värit resetoidaan oletettavasti kun palikkaa liikutetaan ruudukossa
+
+## Viikko 5
+
+- GameLoop luokkaa muokattu:
+
+  - Pudonneiden palikoiden värit ja sijainnit tallennetaan sanakirjaan
+  - Palikoiden törmääminen pohjaan tarkastetaan
+  - Palikoiden väliset törmäykset tarkastetaan
+
+- GameGrid luokkaa muokattu:
+
+  - Lisätty funktio rivien hajotukseen kun ne ovat täynnä
+  - Lisätty funktio kaikkien värien resetoimiseen
+    - Tämä on apufunktio edelliselle
+
+- Testattu:
+
+- GameGrid luokka:
+- Kaikki ruudukot palautuvat odotettavasti
