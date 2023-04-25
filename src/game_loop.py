@@ -1,4 +1,5 @@
 import pygame
+import numpy as np
 from pygame.locals import KEYDOWN, KEYUP, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
 from config import FALL_TIME, FALL_SPEED
@@ -9,7 +10,7 @@ class GameLoop:
         self.display = display
         self.previous_tick = pygame.time.get_ticks()
         self.current_block = block
-        self.previous_block_coordinates = [(0,0), (0,0), (0,0), (0,0)]
+        self.previous_block_coordinates = np.array([(0,0), (0,0), (0,0), (0,0)])
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
         self.key_pressed = False
