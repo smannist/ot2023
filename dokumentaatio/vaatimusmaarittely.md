@@ -19,7 +19,7 @@ Tetriksestä tuttu pelitila:
 - Yksinpeli
 - [x] Erikokoisia ja muotoisia palikoita
 - Tarkoituksena muodostaa suora pelin alatasolle
-  - Palikat hajoavat suoran muodostuessa
+  - [x] Palikat hajoavat suoran muodostuessa (ei vielä täysin toimiva, mutta lähellä)
     - Käyttäjä ansaitsee pisteitä
 - Peli nopeutuu ajan kuluessa
   - Palikat tippuvat nopeammin
