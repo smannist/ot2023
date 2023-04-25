@@ -8,6 +8,7 @@ class TestGameGrid(unittest.TestCase):
     def setUp(self):
         self.game_grid = GameGrid()
         self.block = Block(5,3)
+        self.placed_blocks = {}
 
     def test_game_grid_is_initialized_with_correct_dimensions(self):
         self.assertEqual(self.game_grid.grid.shape, (21, 11, 3))
@@ -20,12 +21,12 @@ class TestGameGrid(unittest.TestCase):
 
     def test_valid_block_moves_are_accepted(self):
         block = Block(5, 3)
-        result = self.game_grid.is_valid_move(block)
+        result = self.game_grid.is_valid_move(block, self.placed_blocks)
         self.assertTrue(result)
 
     def test_invalid_block_moves_are_rejected(self):
         block = Block(15, 3)
-        result = self.game_grid.is_valid_move(block)
+        result = self.game_grid.is_valid_move(block, self.placed_blocks)
         self.assertFalse(result)
 
     def test_cell_colors_on_the_grid_are_reset_correcty(self):
@@ -36,7 +37,7 @@ class TestGameGrid(unittest.TestCase):
 
         current_block_coordinates = self.block.shape_to_coordinates()
 
-        self.game_grid.reset_cell_colors(previous_block_coordinates, current_block_coordinates)
+        self.game_grid.reset_cell_colors(previous_block_coordinates, current_block_coordinates, self.placed_blocks)
 
         expected_colors = [BACKGROUND_COLORS["dark_grey"] if (coord[0] + coord[1]) % 2 == 0 else BACKGROUND_COLORS["light_grey"] for coord in previous_block_coordinates]
         actual_colors = [self.game_grid.grid[coord[1]][coord[0]] for coord in previous_block_coordinates]
