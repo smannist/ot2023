@@ -66,6 +66,7 @@
   - Pudonneiden palikoiden värit ja sijainnit tallennetaan sanakirjaan
   - Palikoiden törmääminen pohjaan tarkastetaan
   - Palikoiden väliset törmäykset tarkastetaan
+  - Uuden palikan "spawnaaminen" nyt mahdollista
 
 - GameGrid luokkaa muokattu:
 
