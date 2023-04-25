@@ -33,3 +33,45 @@ class GameGrid:
                     self.grid[col][row] = BACKGROUND_COLORS["dark_grey"]
                 else:
                     self.grid[col][row] = BACKGROUND_COLORS["light_grey"]
+
+    def reset_all_cell_colors(self, placed_blocks):
+            for row in range(self.grid.shape[0]):
+                for col in range(self.grid.shape[1]):
+                    if (row + col) % 2 == 0 and (row, col) not in placed_blocks:
+                        self.grid[row][col] = BACKGROUND_COLORS["dark_grey"]
+                    elif (row, col) not in placed_blocks:
+                        self.grid[row][col] = BACKGROUND_COLORS["light_grey"]
+
+    def clear_rows(self, placed_blocks):
+        rows_to_clear = []
+        rows_cleared = 0
+        cleared = False
+
+        for i in range(self.grid.shape[0]):
+            if np.all(self.grid[i] != BACKGROUND_COLORS["dark_grey"]) and np.all(self.grid[i] != BACKGROUND_COLORS["light_grey"]):
+                rows_to_clear.append(i)
+
+        rows_cleared = len(rows_to_clear) # think what to do with this
+
+        if len(rows_to_clear) > 0:
+            for row in rows_to_clear:
+                self.grid[1:row+1] = self.grid[0:row].copy()
+                for col in range(self.columns):
+                    try:
+                        del placed_blocks[(col, row)]
+                    except:
+                        continue
+
+            for row, col in sorted(placed_blocks, key=lambda coord: coord[1], reverse=True):
+                if col > rows_cleared:
+                    new_coords = (row, col + 1) # and this
+                    placed_blocks[new_coords] = placed_blocks.pop((row, col))
+
+            cleared = True
+
+        if cleared:
+            return placed_blocks, True
+
+        cleared = False
+
+        return placed_blocks, False

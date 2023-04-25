@@ -27,6 +27,15 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
+            # this is super confusing and needs simplifying, so do the functions related to it
+            # also currently clear row doesnt work for higher row "piles"
+            # task for next week!
+            if not self.renderer.game_grid.clear_rows(self.placed_blocks)[1]:
+                self.placed_blocks = self.renderer.game_grid.clear_rows(self.placed_blocks)[0]
+            else:
+                self.renderer.game_grid.reset_all_cell_colors(self.placed_blocks)
+                self._place_current_block(block_coordinates, clear_block=True)
+
             self._reset_cells(block_coordinates)
             self._update_elapsed_time()
             self._block_movement(block_coordinates)
@@ -113,11 +122,13 @@ class GameLoop:
             return True
         return False
 
-    def _place_current_block(self, current_block_coordinates, c_fact=0):
-        for r, c in current_block_coordinates:
-            self.placed_blocks[(r, c-c_fact)] = self.current_block.color
+    def _place_current_block(self, current_block_coordinates, c_fact=0, clear_block=False):
+        if not clear_block:
+            for r, c in current_block_coordinates:
+                self.placed_blocks[(r, c-c_fact)] = self.current_block.color
         for (r, c), color in self.placed_blocks.items():
-            self.renderer.game_grid.grid[c][r] = color
+            if c < len(self.renderer.game_grid.grid) and r < len(self.renderer.game_grid.grid[c]):
+                self.renderer.game_grid.grid[c][r] = color
 
     def _spawn_next_block(self):
         self.current_block = Block(5,3)
