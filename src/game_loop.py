@@ -13,6 +13,7 @@ class GameLoop:
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
         self.key_pressed = False
+        self.is_dropping = False
         self.previous_rotation = self.current_block.shape
         self.placed_blocks = {}
 
@@ -25,14 +26,13 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
-            self._block_dropping()
-
             self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
                                                       block_coordinates, \
                                                       self.placed_blocks)
 
-            self._block_movement(block_coordinates)
             self._update_elapsed_time()
+            self._block_movement(block_coordinates)
+            self._block_dropping()
 
             pygame.display.update()
 
@@ -41,7 +41,7 @@ class GameLoop:
             if event.type == QUIT:
                 pygame.quit()
                 return False
-            if event.type == KEYDOWN:
+            if event.type == KEYDOWN and not self.is_dropping:
                 self._handle_keydown(event)
             elif event.type == KEYUP:
                 self.key_pressed = False
@@ -95,9 +95,12 @@ class GameLoop:
 
     def _block_dropping(self):
         if self.fall_time >= self.fall_speed * 1000:
+            self.is_dropping = True
             self.fall_time = 0
             self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
+        else:
+            self.is_dropping = False
 
     def _collided_with_bottom(self, col, current_block_coordinates):
         if col == self.renderer.game_grid.grid.shape[0]-1:
