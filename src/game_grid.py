@@ -43,34 +43,37 @@ class GameGrid:
                 elif (row, col) not in placed_blocks:
                     self.grid[row][col] = BACKGROUND_COLORS["light_grey"]
 
-    def clear_rows(self, placed_blocks):
+    def clear_rows(self, placed_blocks, block_landed=False):
         rows_to_clear = []
         rows_cleared = 0
-        cleared = False
 
-        for i in range(self.grid.shape[0]):
-            if np.all(self.grid[i] != BACKGROUND_COLORS["dark_grey"]) \
-               and np.all(self.grid[i] != BACKGROUND_COLORS["light_grey"]):
-                rows_to_clear.append(i)
+        if block_landed:
+            for i in range(self.grid.shape[0]):
+                if np.all(self.grid[i] != BACKGROUND_COLORS["dark_grey"]) \
+                    and np.all(self.grid[i] != BACKGROUND_COLORS["light_grey"]):
+                    rows_to_clear.append(i)
 
-        rows_cleared = len(rows_to_clear) # think what to do with this
+        rows_cleared = len(rows_to_clear)
 
         if len(rows_to_clear) > 0:
             for row in rows_to_clear:
-                self.grid[1:row+1] = self.grid[0:row].copy()
+                self.grid[row] = np.zeros((self.columns, 3))
                 for col in range(self.columns):
                     placed_blocks.pop((col, row), None)
 
-            for row, col in sorted(placed_blocks, key=lambda coord: coord[1], reverse=True):
-                if col > rows_cleared:
-                    new_coords = (row, col + 1) # and this
-                    placed_blocks[new_coords] = placed_blocks.pop((row, col))
+            for row in range(rows_to_clear[0] - 1, -1, -1):
+                for col in range(self.grid.shape[1]):
+                    curr_coords = (col, row)
+                    if curr_coords in placed_blocks:
+                        new_coords = (col, row + rows_cleared)
 
-            cleared = True
+                        while new_coords[1] < self.grid.shape[0] \
+                              and new_coords not in placed_blocks:
 
-        if cleared:
+                            placed_blocks[new_coords] = placed_blocks.pop(curr_coords)
+                            curr_coords = new_coords
+                            new_coords = (curr_coords[0], curr_coords[1] + 1)
+
             return placed_blocks, True
-
-        cleared = False
 
         return placed_blocks, False

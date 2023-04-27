@@ -3,6 +3,7 @@ import numpy as np
 from pygame.locals import KEYDOWN, KEYUP, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
 from config import FALL_TIME, FALL_SPEED
+from block_shapes import I_rot_list
 
 class GameLoop:
     def __init__(self, renderer, display, block):
@@ -15,6 +16,7 @@ class GameLoop:
         self.fall_speed = FALL_SPEED
         self.key_pressed = False
         self.is_dropping = False
+        self.block_landed = False
         self.previous_rotation = self.current_block.shape
         self.placed_blocks = {}
 
@@ -28,13 +30,16 @@ class GameLoop:
             block_coordinates = self.current_block.shape_to_coordinates()
 
             # this is super confusing and needs simplifying, so do the functions related to it
-            # also currently clear row doesnt work for higher row "piles"
-            # task for next week!
-            if not self.renderer.game_grid.clear_rows(self.placed_blocks)[1]:
-                self.placed_blocks = self.renderer.game_grid.clear_rows(self.placed_blocks)[0]
-            else:
+            while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
                 self.renderer.game_grid.reset_all_cell_colors(self.placed_blocks)
                 self._place_current_block(block_coordinates, clear_block=True)
+
+            if not self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
+                self.placed_blocks = self.renderer.game_grid.clear_rows(self.placed_blocks, \
+                                                                        self.block_landed)[0]
+
+            if self.block_landed is True:
+                self.block_landed = False
 
             self._reset_cells(block_coordinates)
             self._update_elapsed_time()
@@ -96,6 +101,7 @@ class GameLoop:
         for _, (row, col) in enumerate(current_block_coordinates):
             if self._collided_with_bottom(col, current_block_coordinates) \
                     or self._collided_with_block(current_block_coordinates, self.placed_blocks):
+                self.block_landed = True
                 self._spawn_next_block()
                 break
             self.renderer.game_grid.grid[col][row] = self.current_block.color
@@ -110,9 +116,16 @@ class GameLoop:
             self.is_dropping = False
 
     def _collided_with_bottom(self, col, current_block_coordinates):
+        if col == self.renderer.game_grid.grid.shape[0]:
+            if any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
+                self._place_current_block(current_block_coordinates, c_fact=1)
+                return True
+
         if col == self.renderer.game_grid.grid.shape[0]-1:
-            self._place_current_block(current_block_coordinates)
-            return True
+            if not any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
+                self._place_current_block(current_block_coordinates)
+                return True
+
         return False
 
     def _collided_with_block(self, current_block_coordinates, placed_blocks):
@@ -126,6 +139,7 @@ class GameLoop:
         if not clear_block:
             for r, c in current_block_coordinates:
                 self.placed_blocks[(r, c-c_fact)] = self.current_block.color
+
         for (r, c), color in self.placed_blocks.items():
             if c < len(self.renderer.game_grid.grid) and r < len(self.renderer.game_grid.grid[c]):
                 self.renderer.game_grid.grid[c][r] = color
