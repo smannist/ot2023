@@ -12,5 +12,5 @@
 | 18.4. | 5    | Pylintin tarjoamat korjausehdotukset, luokkakaavio, testejä                                                                                                        |
 | 24.4. | 6    | Pudonneiden palikoiden sijainti sanakirjaan, lint, palikoiden törmäykset, paljon refaktorointia ja optimointia                                                     |
 | 25.4. | 11   | Suurin osa ajasta kului bugien metsästämiseen. Myös rivien tyhjennys on osoittautunut haastavaksi. Lisäksi refaktorointia, yksi testi ja koodin laadun parantelua. |
-| 26.4. | 5    | Rivien tyhjennys nyt (ehkä?) toiminallinen, lisäksi korjattu I-muotoisen palikan kolliisiobugi                                                                     |
+| 27.4. | 5    | Rivien tyhjennys nyt (ehkä?) toiminallinen, lisäksi korjattu I-muotoisen palikan kolliisiobugi                                                                     |
 |  yht  | 53.5 |                                                                                                                                                                    |
