@@ -29,10 +29,7 @@ class GameLoop:
 
             block_coordinates = self.current_block.shape_to_coordinates()
 
-            # this is super confusing and needs simplifying, so do the functions related to it
-            while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
-                self.renderer.game_grid.reset_all_cell_colors(self.placed_blocks)
-                self._place_current_block(block_coordinates, clear_block=True)
+            self._clear_rows(block_coordinates)
 
             if self.block_landed is True:
                 self.block_landed = False
@@ -147,6 +144,11 @@ class GameLoop:
         self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
                                                       block_coordinates, \
                                                       self.placed_blocks)
+
+    def _clear_rows(self, block_coordinates):
+        while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
+            self.renderer.game_grid.reset_all_cell_colors(self.placed_blocks)
+            self._place_current_block(block_coordinates, clear_block=True)
 
     def _update_elapsed_time(self):
         current_tick = pygame.time.get_ticks()
