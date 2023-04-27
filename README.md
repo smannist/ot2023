@@ -11,7 +11,7 @@ Legendaarinen Tetris pygame kirjastolla
 
 ## Nykytila
 
-Tällä hetkellä pelissä on peruspalikat, palikat putoavat ja niitä voi käännellä. Muu perustoiminnalisuus rakennetaan ensiviikkoon mennessä.
+Pelissä ei voi vielä ansaita pisteitä, eikä ruudukolle tehdä ylaraja tarkistusta (siispä peli ei lopu kunnollisesti jos palikka iskeytyy ruudukon kattoon). Muuten muut perustoiminallisuudet pitäisi olla kunnossa (rivien hajottamisessa tosin saattaa vielä olla bugeja, sillä kaikkia tilanteita en ole päässyt testailemaan).
 
 ## Asennus
 
