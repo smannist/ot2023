@@ -37,8 +37,6 @@ class GameLoop:
             self._block_movement(block_coordinates)
             self._block_dropping()
 
-            print(block_coordinates)
-
             pygame.display.update()
 
     def _handle_events(self):
