@@ -1,5 +1,5 @@
 import pygame
-from config import TETRIS_WIDTH, TETRIS_HEIGHT, BACKGROUND_COLORS, CENTER_X, CENTER_Y
+from config import TETRIS_WIDTH, TETRIS_HEIGHT, COLORS, CENTER_X, CENTER_Y
 
 class Renderer:
     def __init__(self, display, game_grid):
@@ -11,7 +11,7 @@ class Renderer:
         self._render_full_board(display)
 
     def _render_background(self):
-        self.display.fill((BACKGROUND_COLORS["cyan"]))
+        self.display.fill((COLORS["cyan"]))
 
     def _render_full_board(self, display):
         self._render_grid(display, CENTER_X, CENTER_Y)
@@ -35,4 +35,4 @@ class Renderer:
                                        TETRIS_WIDTH + 30 + border_width, \
                                        TETRIS_HEIGHT + 40)
 
-        pygame.draw.rect(display, BACKGROUND_COLORS["black"], border_rectangle, border_width)
+        pygame.draw.rect(display, COLORS["black"], border_rectangle, border_width)

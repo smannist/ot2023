@@ -1,11 +1,11 @@
 import numpy as np
-from config import GAME_GRID_COLUMNS, GAME_GRID_ROWS, BACKGROUND_COLORS
+from config import GAME_GRID_COLUMNS, GAME_GRID_ROWS, COLORS
 
 class GameGrid:
     def __init__(self):
         self.rows = GAME_GRID_ROWS
         self.columns = GAME_GRID_COLUMNS
-        self.grid = np.array([[BACKGROUND_COLORS["dark_grey"] if (row + col) % 2 == 0 else BACKGROUND_COLORS["light_grey"] \
+        self.grid = np.array([[COLORS["dark_grey"] if (row + col) % 2 == 0 else COLORS["light_grey"] \
                                                               for col in range(self.columns)] for row in range(self.rows)])
 
     def is_valid_move(self, block, placed_blocks):
@@ -20,17 +20,17 @@ class GameGrid:
         for col, row in previous_block_coordinates:
             if (col, row) not in block_coordinates and (col, row) not in placed_blocks:
                 if (col + row) % 2 == 0:
-                    self.grid[row][col] = BACKGROUND_COLORS["dark_grey"]
+                    self.grid[row][col] = COLORS["dark_grey"]
                 else:
-                    self.grid[row][col] = BACKGROUND_COLORS["light_grey"]
+                    self.grid[row][col] = COLORS["light_grey"]
 
     def reset_all_cell_colors(self, placed_blocks):
         for col in range(self.grid.shape[0]):
             for row in range(self.grid.shape[1]):
                 if (row + col) % 2 == 0 and (col, row) not in placed_blocks:
-                    self.grid[col][row] = BACKGROUND_COLORS["dark_grey"]
+                    self.grid[col][row] = COLORS["dark_grey"]
                 elif (row, col) not in placed_blocks:
-                    self.grid[col][row] = BACKGROUND_COLORS["light_grey"]
+                    self.grid[col][row] = COLORS["light_grey"]
 
     def clear_rows(self, placed_blocks, block_landed=False):
         rows_cleared = 0
