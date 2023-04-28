@@ -11,10 +11,8 @@ class GameLoop:
         self.display = display
         self.previous_tick = pygame.time.get_ticks()
         self.current_block = block
-        self.previous_block_coordinates = np.array([(0,0), (0,0), (0,0), (0,0)])
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
-        self.key_pressed = False
         self.is_dropping = False
         self.block_landed = False
         self.previous_rotation = self.current_block.shape
@@ -50,14 +48,10 @@ class GameLoop:
                 return False
             if event.type == KEYDOWN and not self.is_dropping:
                 self._handle_keydown(event)
-            elif event.type == KEYUP:
-                self.key_pressed = False
         return True
 
     def _handle_keydown(self, event):
-        if not self.key_pressed:
             self.key_pressed = True
-            self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             if event.key == K_UP:
                 self._handle_rotate_block()
             elif event.key == K_DOWN:
@@ -105,7 +99,6 @@ class GameLoop:
         if self.fall_time >= self.fall_speed * 1000:
             self.is_dropping = True
             self.fall_time = 0
-            self.previous_block_coordinates = self.current_block.shape_to_coordinates()
             self.current_block.move_down()
         else:
             self.is_dropping = False
@@ -142,9 +135,8 @@ class GameLoop:
         self.current_block = Block(5,3)
 
     def _reset_cells(self, block_coordinates):
-        self.renderer.game_grid.reset_cell_colors(self.previous_block_coordinates, \
-                                                      block_coordinates, \
-                                                      self.placed_blocks)
+        self.renderer.game_grid.reset_cell_colors(block_coordinates, \
+                                                  self.placed_blocks)
 
     def _clear_rows(self, block_coordinates):
         while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:

@@ -18,13 +18,14 @@ class GameGrid:
         block_positions = set(block.shape_to_coordinates())
         return block_positions.issubset(valid_moves)
 
-    def reset_cell_colors(self, previous_block_coordinates, block_coordinates, placed_blocks):
-        for col, row in previous_block_coordinates:
-            if (col, row) not in block_coordinates and (col, row) not in placed_blocks:
+    def reset_cell_colors(self, block_coordinates, placed_blocks):
+        for col, row in block_coordinates:
+            if (col, row) not in placed_blocks and row < self.rows:
                 if (col + row) % 2 == 0:
                     self.grid[row][col] = COLORS["dark_grey"]
                 else:
                     self.grid[row][col] = COLORS["light_grey"]
+        self._reset_colors_for_all_cells(placed_blocks)
 
     def clear_rows(self, placed_blocks, block_landed=False):
         rows_to_clear = []
