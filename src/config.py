@@ -1,3 +1,9 @@
+import os
+
+## FONT PATH ##
+
+FONT_PATH = os.path.join("src/fonts", "PressStart2P-Regular.ttf")
+
 ## GAME WINDOW DIMENSIONS ##
 
 PYGAME_WIDTH = 800

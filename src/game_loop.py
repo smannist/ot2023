@@ -17,10 +17,11 @@ class GameLoop:
         self.block_landed = False
         self.previous_rotation = self.current_block.shape
         self.placed_blocks = {}
+        self.next_block = self._spawn_next_block()
 
     def start(self):
         while True:
-            self.renderer.render_all(self.display)
+            self.renderer.render_all(self.display, self.next_block)
 
             if not self._handle_events():
                 break
@@ -88,7 +89,8 @@ class GameLoop:
             if self._collided_with_bottom(row, current_block_coordinates) \
                     or self._collided_with_block(current_block_coordinates, self.placed_blocks):
                 self.block_landed = True
-                self._spawn_next_block()
+                self.current_block = self.next_block
+                self.next_block = self._spawn_next_block()
                 break
             self.renderer.game_grid.grid[row][col] = self.current_block.color
 
@@ -129,7 +131,7 @@ class GameLoop:
             self.renderer.game_grid.grid[r][c] = color
 
     def _spawn_next_block(self):
-        self.current_block = Block(5,3)
+        return Block(5,3)
 
     def _reset_cells(self, block_coordinates):
         self.renderer.game_grid.reset_cell_colors(block_coordinates, \
