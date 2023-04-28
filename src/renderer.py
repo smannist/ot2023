@@ -57,8 +57,7 @@ class Renderer:
         for i, row in enumerate(block.shape):
             for j, column in enumerate(row):
                 if column == 1:
-                    shape_x = dx + j*block_size + 38
-                    shape_rect = pygame.Rect(shape_x, \
+                    shape_rect = pygame.Rect(dx + j*block_size + 38, \
                                              shape_y+ i*block_size - 40, \
                                              block_size, block_size)
                     pygame.draw.rect(display, block.color, shape_rect, 0)
