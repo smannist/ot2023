@@ -5,19 +5,8 @@ class GameGrid:
     def __init__(self):
         self.rows = GAME_GRID_ROWS
         self.columns = GAME_GRID_COLUMNS
-        self.grid = self._initialize_grid()
-
-    def _initialize_grid(self):
-        grid = np.full((self.rows, self.columns, 3), (0, 0, 0))
-
-        for row in range(grid.shape[0]):
-            for col in range(grid.shape[1]):
-                if (row + col) % 2 == 0:
-                    grid[row][col] = BACKGROUND_COLORS["dark_grey"]
-                else:
-                    grid[row][col] = BACKGROUND_COLORS["light_grey"]
-
-        return grid
+        self.grid = np.array([[BACKGROUND_COLORS["dark_grey"] if (row + col) % 2 == 0 else BACKGROUND_COLORS["light_grey"] \
+                                                              for col in range(self.columns)] for row in range(self.rows)])
 
     def is_valid_move(self, block, placed_blocks):
         valid_moves = set((col, row) for row in range(GAME_GRID_ROWS) \
@@ -67,3 +56,4 @@ class GameGrid:
                 rows_cleared = len(rows_to_clear)
 
         return placed_blocks, rows_cleared > 0
+
