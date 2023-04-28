@@ -93,13 +93,13 @@ class GameLoop:
             self.current_block.move_left()
 
     def _block_movement(self, current_block_coordinates):
-        for _, (row, col) in enumerate(current_block_coordinates):
-            if self._collided_with_bottom(col, current_block_coordinates) \
+        for _, (col, row) in enumerate(current_block_coordinates):
+            if self._collided_with_bottom(row, current_block_coordinates) \
                     or self._collided_with_block(current_block_coordinates, self.placed_blocks):
                 self.block_landed = True
                 self._spawn_next_block()
                 break
-            self.renderer.game_grid.grid[col][row] = self.current_block.color
+            self.renderer.game_grid.grid[row][col] = self.current_block.color
 
     def _block_dropping(self):
         if self.fall_time >= self.fall_speed * 1000:
@@ -110,13 +110,13 @@ class GameLoop:
         else:
             self.is_dropping = False
 
-    def _collided_with_bottom(self, col, current_block_coordinates):
-        if col == self.renderer.game_grid.grid.shape[0]:
+    def _collided_with_bottom(self, row, current_block_coordinates):
+        if row == self.renderer.game_grid.grid.shape[0]:
             if any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
-                self._place_current_block(current_block_coordinates, c_fact=1)
+                self._place_current_block(current_block_coordinates, y_offset=1)
                 return True
 
-        if col == self.renderer.game_grid.grid.shape[0]-1:
+        if row == self.renderer.game_grid.grid.shape[0]-1:
             if not any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
                 self._place_current_block(current_block_coordinates)
                 return True
@@ -126,18 +126,18 @@ class GameLoop:
     def _collided_with_block(self, current_block_coordinates, placed_blocks):
         current_block_set = set(current_block_coordinates)
         if current_block_set.intersection(placed_blocks):
-            self._place_current_block(current_block_coordinates, c_fact=1)
+            self._place_current_block(current_block_coordinates, y_offset=1)
             return True
         return False
 
-    def _place_current_block(self, current_block_coordinates, c_fact=0, clear_block=False):
+    def _place_current_block(self, current_block_coordinates, y_offset=0, clear_block=False):
         if not clear_block:
-            for r, c in current_block_coordinates:
-                self.placed_blocks[(r, c-c_fact)] = self.current_block.color
+            for col, row in current_block_coordinates:
+                self.placed_blocks[(col, row-y_offset)] = self.current_block.color
 
-        for (r, c), color in self.placed_blocks.items():
-            if c < len(self.renderer.game_grid.grid) and r < len(self.renderer.game_grid.grid[c]):
-                self.renderer.game_grid.grid[c][r] = color
+        for (c, r), color in self.placed_blocks.items():
+            if r < len(self.renderer.game_grid.grid) and c < len(self.renderer.game_grid.grid[c]):
+                self.renderer.game_grid.grid[r][c] = color
 
     def _spawn_next_block(self):
         self.current_block = Block(5,3)
