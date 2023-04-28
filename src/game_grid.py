@@ -13,6 +13,7 @@ class GameGrid:
     def is_valid_move(self, block, placed_blocks):
         valid_moves = set((col, row) for row in range(GAME_GRID_ROWS) \
                                      for col in range(GAME_GRID_COLUMNS))
+
         blocks_on_grid = set(placed_blocks.keys())
         valid_moves -= blocks_on_grid
         block_positions = set(block.shape_to_coordinates())
