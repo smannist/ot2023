@@ -51,7 +51,7 @@ class Renderer:
                                CENTER_Y + TETRIS_HEIGHT/2 - 50 + text_height + 10)
 
         display.blit(text, (CENTER_X + TETRIS_WIDTH + 50, \
-                            CENTER_Y + TETRIS_HEIGHT/2 - 50 - 30))
+                            CENTER_Y + TETRIS_HEIGHT/2 - 50 - 30)) #try to refactor the text part out later
 
     def _draw_block_shape(self, display, block, block_size, dx, shape_y):
         for i, row in enumerate(block.shape):
