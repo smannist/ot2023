@@ -17,12 +17,12 @@ class GameGrid:
         return block_positions.issubset(valid_moves)
 
     def reset_cell_colors(self, previous_block_coordinates, block_coordinates, placed_blocks):
-        for row, col in previous_block_coordinates:
-            if (row, col) not in block_coordinates and (row, col) not in placed_blocks:
-                if (row + col) % 2 == 0:
-                    self.grid[col][row] = BACKGROUND_COLORS["dark_grey"]
+        for col, row in previous_block_coordinates:
+            if (col, row) not in block_coordinates and (col, row) not in placed_blocks:
+                if (col + row) % 2 == 0:
+                    self.grid[row][col] = BACKGROUND_COLORS["dark_grey"]
                 else:
-                    self.grid[col][row] = BACKGROUND_COLORS["light_grey"]
+                    self.grid[row][col] = BACKGROUND_COLORS["light_grey"]
 
     def reset_all_cell_colors(self, placed_blocks):
         for row in range(self.grid.shape[0]):
