@@ -13,4 +13,5 @@
 | 24.4. | 6    | Pudonneiden palikoiden sijainti sanakirjaan, lint, palikoiden törmäykset, paljon refaktorointia ja optimointia                                                     |
 | 25.4. | 11   | Suurin osa ajasta kului bugien metsästämiseen. Myös rivien tyhjennys on osoittautunut haastavaksi. Lisäksi refaktorointia, yksi testi ja koodin laadun parantelua. |
 | 27.4. | 5.5  | Rivien tyhjennys nyt (ehkä?) toiminallinen, lisäksi korjattu I-muotoisen palikan kolliisiobugi                                                                     |
-|  yht  | 54   |                                                                                                                                                                    |
+| 28.4. | 3    | Rivien tyhjennyksen pitäisi toimia. Paljon refaktorointia ja muuttujien nimien tuunailua. Renderer piirtää nyt seuraavan palikan kuvan                             |
+|  yht  | 57   |                                                                                                                                                                    |
