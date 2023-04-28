@@ -136,7 +136,7 @@ class GameLoop:
                 self.placed_blocks[(col, row-y_offset)] = self.current_block.color
 
         for (c, r), color in self.placed_blocks.items():
-                self.renderer.game_grid.grid[r][c] = color
+            self.renderer.game_grid.grid[r][c] = color
 
     def _spawn_next_block(self):
         self.current_block = Block(5,3)
