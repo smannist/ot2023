@@ -1,6 +1,6 @@
 import pygame
 import numpy as np
-from pygame.locals import KEYDOWN, KEYUP, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
+from pygame.locals import KEYDOWN, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
 from config import FALL_TIME, FALL_SPEED
 from block_shapes import I_rot_list
@@ -51,15 +51,14 @@ class GameLoop:
         return True
 
     def _handle_keydown(self, event):
-            self.key_pressed = True
-            if event.key == K_UP:
-                self._handle_rotate_block()
-            elif event.key == K_DOWN:
-                self._handle_move_block_down()
-            elif event.key == K_LEFT:
-                self._handle_move_block_left()
-            elif event.key == K_RIGHT:
-                self._handle_move_block_right()
+        if event.key == K_UP:
+            self._handle_rotate_block()
+        elif event.key == K_DOWN:
+            self._handle_move_block_down()
+        elif event.key == K_LEFT:
+            self._handle_move_block_left()
+        elif event.key == K_RIGHT:
+            self._handle_move_block_right()
 
     def _handle_rotate_block(self):
         self.previous_rotation = self.current_block.shape
