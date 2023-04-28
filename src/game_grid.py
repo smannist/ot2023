@@ -25,12 +25,12 @@ class GameGrid:
                     self.grid[row][col] = BACKGROUND_COLORS["light_grey"]
 
     def reset_all_cell_colors(self, placed_blocks):
-        for row in range(self.grid.shape[0]):
-            for col in range(self.grid.shape[1]):
-                if (row + col) % 2 == 0 and (row, col) not in placed_blocks:
-                    self.grid[row][col] = BACKGROUND_COLORS["dark_grey"]
+        for col in range(self.grid.shape[0]):
+            for row in range(self.grid.shape[1]):
+                if (row + col) % 2 == 0 and (col, row) not in placed_blocks:
+                    self.grid[col][row] = BACKGROUND_COLORS["dark_grey"]
                 elif (row, col) not in placed_blocks:
-                    self.grid[row][col] = BACKGROUND_COLORS["light_grey"]
+                    self.grid[col][row] = BACKGROUND_COLORS["light_grey"]
 
     def clear_rows(self, placed_blocks, block_landed=False):
         rows_cleared = 0
