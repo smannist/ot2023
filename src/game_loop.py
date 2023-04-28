@@ -148,7 +148,6 @@ class GameLoop:
 
     def _clear_rows(self, block_coordinates):
         while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
-            self.renderer.game_grid.reset_all_cell_colors(self.placed_blocks)
             self._place_current_block(block_coordinates, clear_block=True)
 
     def _update_elapsed_time(self):
