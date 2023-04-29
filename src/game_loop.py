@@ -39,7 +39,13 @@ class GameLoop:
             self._block_dropping()
             self._update_elapsed_time()
             self._update_score()
-            self._check_if_player_lost(self.placed_blocks)
+
+            if self._check_if_player_lost(self.placed_blocks):
+                self._block_movement(block_coordinates)
+                self._place_current_block(block_coordinates)
+                self._reset_cells(block_coordinates)
+                pygame.display.update()
+                pygame.time.delay(1500)
 
             pygame.display.update()
 
@@ -95,7 +101,8 @@ class GameLoop:
                 self.current_block = self.next_block
                 self.next_block = self._spawn_next_block()
                 break
-            self.renderer.game_grid.grid[row][col] = self.current_block.color
+            if row >= 0:
+                self.renderer.game_grid.grid[row][col] = self.current_block.color
 
     def _block_dropping(self):
         if self.fall_time >= self.fall_speed * 1000:
@@ -134,7 +141,7 @@ class GameLoop:
             self.renderer.game_grid.grid[r][c] = color
 
     def _spawn_next_block(self):
-        return Block(5,3)
+        return Block(5,0)
 
     def _reset_cells(self, block_coordinates):
         self.renderer.game_grid.reset_cell_colors(block_coordinates, \

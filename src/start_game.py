@@ -9,7 +9,7 @@ def start_game():
     display = pygame.display.set_mode((PYGAME_WIDTH , PYGAME_HEIGHT))
 
     game_grid = GameGrid()
-    block = Block(5,3)
+    block = Block(5,0)
     renderer = Renderer(display, game_grid)
     game_loop = GameLoop(renderer, display, block)
 
