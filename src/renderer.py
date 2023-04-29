@@ -90,8 +90,8 @@ class Renderer:
 
         difference = 0
 
-        for _, dict in enumerate(highscores):
-            score_text = self._set_text(str(dict["score"]), font)
+        for _, score_dict in enumerate(highscores):
+            score_text = self._set_text(str(score_dict["score"]), font)
             display.blit(score_text, (x_pos+25, y_pos + difference))
             difference += 22
 

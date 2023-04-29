@@ -27,18 +27,48 @@ class GameGrid:
                     self.grid[row][col] = COLORS["dark_grey"]
                 else:
                     self.grid[row][col] = COLORS["light_grey"]
-        self._reset_colors_for_all_cells(placed_blocks)
+        self._update_grid(placed_blocks)
 
     def clear_rows(self, placed_blocks, block_landed=False):
         rows_to_clear = self._get_rows_to_clear(placed_blocks)
 
         if block_landed and rows_to_clear:
             self.score += 100*len(rows_to_clear)
-            self._remove_blocks_in_rows(rows_to_clear, placed_blocks)
-            self._shift_blocks(rows_to_clear, placed_blocks)
-            self._reset_colors_for_all_cells(placed_blocks)
+            self._remove_rows_and_move(rows_to_clear, placed_blocks)
+            self._add_new_top(placed_blocks)
 
         return placed_blocks, len(rows_to_clear) > 0
+
+    def _remove_rows_and_move(self, rows_to_clear, placed_blocks):
+        for row in rows_to_clear:
+            self._remove_row(row, placed_blocks)
+            self._move_blocks_down(row, placed_blocks)
+
+    def _remove_row(self, row, placed_blocks):
+        for col in range(self.columns):
+            del placed_blocks[(col, row)]
+
+    def _move_blocks_down(self, row, placed_blocks):
+        for r in range(row-1, -1, -1):
+            for c in range(self.columns):
+                if (c, r) in placed_blocks:
+                    color = placed_blocks.pop((c, r))
+                    placed_blocks[(c, r+1)] = color
+                else:
+                    self.grid[r+1][c] = self.grid[r][c]
+
+    def _add_new_top(self, placed_blocks):
+        new_row = [COLORS["dark_grey"] if (col+1) % 2 == 0 else COLORS["light_grey"] \
+                for col in range(self.columns)]
+
+        for c in range(self.columns):
+            if (c, 0) in placed_blocks:
+                color = placed_blocks.pop((c, 0))
+                placed_blocks[(c, 1)] = color
+            else:
+                self.grid[1][c] = self.grid[0][c]
+
+        self.grid[0] = new_row
 
     def _get_rows_to_clear(self, placed_blocks):
         rows_to_clear = []
@@ -49,20 +79,7 @@ class GameGrid:
 
         return rows_to_clear
 
-    def _remove_blocks_in_rows(self, rows_to_clear, placed_blocks):
-        for row in rows_to_clear:
-            for col in range(self.columns):
-                del placed_blocks[(col, row)]
-
-    def _shift_blocks(self, rows_to_clear, placed_blocks):
-        for row in range(max(rows_to_clear) - 1, -1, -1):
-            for col in range(self.columns):
-                if (col, row) in placed_blocks:
-                    color = placed_blocks.pop((col, row))
-                    new_coords = (col, row + len(rows_to_clear))
-                    placed_blocks[new_coords] = color
-
-    def _reset_colors_for_all_cells(self, placed_blocks):
+    def _update_grid(self, placed_blocks):
         self.grid = np.array([[COLORS["dark_grey"] if (row + col) % 2 == 0 \
                               else COLORS["light_grey"] \
                               for col in range(self.columns)] \

@@ -191,8 +191,8 @@ class GameLoop:
 
     def _add_highscore(self):
         self.highscore_service.add_highscore(self.score)
-    
+
     def _increase_difficulty(self):
         if self.previous_tick >= self.difficulty * 1000:
-                self._increase_fall_speed(0.01)
-                self.difficulty += 5
+            self._increase_fall_speed(0.01)
+            self.difficulty += 5
