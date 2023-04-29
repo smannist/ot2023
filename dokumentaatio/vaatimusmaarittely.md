@@ -16,11 +16,11 @@ Graafinen käyttöliittymä Pygame -kirjastolla.
 
 Tetriksestä tuttu pelitila:
 
-- Yksinpeli
+- [x] Yksinpeli
 - [x] Erikokoisia ja muotoisia palikoita
 - [x] Tarkoituksena muodostaa suora pelin alatasolle (suoran voi nyt muodostaa)
-  - Palikat hajoavat suoran muodostuessa (ei vielä täysin toimiva, mutta lähellä)
-  - Käyttäjä ansaitsee pisteitä
+  - [x] Palikat hajoavat suoran muodostuessa (ei vielä täysin toimiva, mutta lähellä)
+  - [x] Käyttäjä ansaitsee pisteitä
 - Peli nopeutuu ajan kuluessa
   - Palikat tippuvat nopeammin
 
