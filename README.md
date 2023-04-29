@@ -12,7 +12,7 @@ Palikan ohjaus tapahtuu nuolinäppäimillä:
 
 &#8594; käänny oikealle
 
-&#8595; pudota palikka
+&#8595; pudota palikkaa alemmas
 
 &#8593; rotaatio
 
