@@ -10,6 +10,7 @@ class Renderer:
         self._render_background()
         self._render_full_board(display)
         self._render_next_block(display, next_block)
+        self._render_score(display)
 
     def _render_background(self):
         self.display.fill((COLORS["cyan"]))
@@ -52,6 +53,15 @@ class Renderer:
 
         display.blit(text, (CENTER_X + TETRIS_WIDTH + 50, \
                             CENTER_Y + TETRIS_HEIGHT/2 - 80)) #try to refactor the text part out later
+    
+    def _render_score(self, display):
+        font = self._get_font()
+        text = self._set_text("Score", font)
+
+        _, text_height = font.size("Score")
+
+        display.blit(text,(CENTER_X + TETRIS_WIDTH - 480, \
+                            CENTER_Y + TETRIS_HEIGHT/2 - 80) )
 
     def _draw_block_shape(self, display, block, block_size, dx, shape_y):
         for i, row in enumerate(block.shape):
