@@ -7,7 +7,7 @@ class HighscoreService():
     
     def get_highscores(self):
         highscores = self.highscore_repository.fetch_highscores()
-        return [{'score': row[0]} for row in highscores]
+        return [{'id': row[0], 'score': row[1]} for row in highscores]
     
     def add_highscore(self, score):
         self.highscore_repository.insert_highscore(score)

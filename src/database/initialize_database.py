@@ -4,7 +4,7 @@ def drop_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute("""
-        drop table if exists highscores;
+        DROP TABLE IF EXISTS highscores;
     """)
 
     connection.commit()
@@ -13,8 +13,9 @@ def create_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute("""
-        create table if not exists highscores (
-            score int primary key
+        CREATE TABLE IF NOT EXISTS highscores (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            score INT
         );
     """)
 
