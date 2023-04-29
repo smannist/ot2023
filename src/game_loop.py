@@ -20,6 +20,7 @@ class GameLoop:
         self.placed_blocks = {}
         self.next_block = self._spawn_next_block()
         self.score = 0
+        self.difficulty = 2
 
     def start(self):
         while True:
@@ -39,6 +40,7 @@ class GameLoop:
             self._block_movement(block_coordinates)
             self._block_dropping()
             self._update_elapsed_time()
+            self._increase_difficulty()
             self._update_score()
 
             if self._check_if_player_lost(self.placed_blocks):
@@ -168,6 +170,9 @@ class GameLoop:
         self.fall_time += elapsed_time
         self.previous_tick = current_tick
 
+    def _increase_fall_speed(self, amount):
+        self.fall_speed -= amount
+
     def _is_valid_move(self):
         return self.renderer.game_grid.is_valid_move(self.current_block, \
                                                     self.placed_blocks)
@@ -186,3 +191,8 @@ class GameLoop:
 
     def _add_highscore(self):
         self.highscore_service.add_highscore(self.score)
+    
+    def _increase_difficulty(self):
+        if self.previous_tick >= self.difficulty * 1000:
+                self._increase_fall_speed(0.01)
+                self.difficulty += 5
