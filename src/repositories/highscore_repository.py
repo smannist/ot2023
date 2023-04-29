@@ -6,10 +6,13 @@ class HighscoreRepository:
         self.cur = self._connection.cursor()
 
     def fetch_highscores(self):
-        return self.cur.execute("SELECT * FROM highscores").fetchall()
+        return self.cur.execute("SELECT * FROM highscores ORDER BY score DESC").fetchall()
 
     def insert_highscore(self, score):
         self.cur.execute("""INSERT INTO highscores (score)
                             VALUES (?)""", (score,))
         self._connection.commit()
 
+    def delete_lowest_highscore(self, id):
+        self.cur.execute("DELETE FROM highscores WHERE id = ?", (id,))
+        self._connection.commit()

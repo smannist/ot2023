@@ -77,6 +77,24 @@ class Renderer:
         display.blit(text, (CENTER_X + TETRIS_WIDTH/2 - t_width/2, \
                         CENTER_Y + TETRIS_HEIGHT/2 - t_height/2))
 
+    def render_highscores(self, display, highscores):
+        font = self._get_font()
+        text = self._set_text("Highscores", font)
+        t_width, t_height = font.size("Highscores")
+
+        display.blit(text, (CENTER_X + TETRIS_WIDTH/2 - t_width/2, \
+                    CENTER_Y + TETRIS_HEIGHT/2 - t_height/2 + 60))
+
+        x_pos = CENTER_X + TETRIS_WIDTH/2 - 50 #maybe dont assign variables , not sure
+        y_pos = CENTER_Y + TETRIS_HEIGHT/2 + 100
+
+        difference = 0
+
+        for _, dict in enumerate(highscores):
+            score_text = self._set_text(str(dict["score"]), font)
+            display.blit(score_text, (x_pos+25, y_pos + difference))
+            difference += 22
+
     def _draw_block_shape(self, display, block, block_size, dx, shape_y):
         for i, row in enumerate(block.shape):
             for j, column in enumerate(row):

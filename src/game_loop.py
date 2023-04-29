@@ -9,8 +9,9 @@ class GameLoop:
     def __init__(self, renderer, display, block, highscore_service):
         self.renderer = renderer
         self.display = display
-        self.previous_tick = pygame.time.get_ticks()
         self.current_block = block
+        self.highscore_service = highscore_service
+        self.previous_tick = pygame.time.get_ticks()
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
         self.is_dropping = False
@@ -19,7 +20,6 @@ class GameLoop:
         self.placed_blocks = {}
         self.next_block = self._spawn_next_block()
         self.score = 0
-        self.highscore_service = highscore_service
 
     def start(self):
         while True:
@@ -42,12 +42,12 @@ class GameLoop:
             self._update_score()
 
             if self._check_if_player_lost(self.placed_blocks):
-                self._block_movement(block_coordinates)
-                self._place_current_block(block_coordinates)
-                self._reset_cells(block_coordinates)
                 self._render_game_over()
-                self.highscore_service.add_highscore(self.score)
-                print(self.highscore_service.get_highscores())
+
+                if self.score > 0:
+                    self._add_highscore()
+
+                self._render_highscores(self.highscore_service.get_highscores())
                 pygame.display.update()
                 pygame.time.delay(3000)
                 break
@@ -180,3 +180,9 @@ class GameLoop:
 
     def _render_game_over(self):
         self.renderer.render_game_over_txt(self.display)
+
+    def _render_highscores(self , highscore):
+        self.renderer.render_highscores(self.display, highscore)
+
+    def _add_highscore(self):
+        self.highscore_service.add_highscore(self.score)
