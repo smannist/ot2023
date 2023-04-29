@@ -26,9 +26,9 @@ Tetriksestä tuttu pelitila:
 
 Muita ominaisuuksia:
 
-- Käyttäjä pystyy tallentamaan pisteensä
-  - Pisteiden tulee olla tarpeeksi korkeat
-    - Esimerkiksi TOP 10
+- [x] Käyttäjä pystyy tallentamaan pisteensä
+  - [x] Pisteiden tulee olla tarpeeksi korkeat
+    - [x] Esimerkiksi TOP 10
 
 ## Jatkokehitysideoita
 
