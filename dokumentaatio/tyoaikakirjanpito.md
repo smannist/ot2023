@@ -14,4 +14,5 @@
 | 25.4. | 11   | Suurin osa ajasta kului bugien metsästämiseen. Myös rivien tyhjennys on osoittautunut haastavaksi. Lisäksi refaktorointia, yksi testi ja koodin laadun parantelua. |
 | 27.4. | 5.5  | Rivien tyhjennys nyt (ehkä?) toiminallinen, lisäksi korjattu I-muotoisen palikan kolliisiobugi                                                                     |
 | 28.4. | 3    | Rivien tyhjennyksen pitäisi toimia. Paljon refaktorointia ja muuttujien nimien tuunailua. Renderer piirtää nyt seuraavan palikan kuvan                             |
-|  yht  | 57   |                                                                                                                                                                    |
+| 29.4. | 7    | Renderer luokan muokkausta, refaktorointia, musiikki peliin, tietokannan alustus ja muu siihen liittyvä toiminnallisuus, pelin vaikeusasteen nousu                 |
+|  yht  | 64   |                                                                                                                                                                    |
