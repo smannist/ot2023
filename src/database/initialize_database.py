@@ -13,7 +13,7 @@ def create_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute("""
-        create table highscores (
+        create table if not exists highscores (
             score int primary key
         );
     """)
