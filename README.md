@@ -2,6 +2,9 @@
 
 Legendaarinen Tetris pygame kirjastolla
 
+Music is from OpenGameArt.org: https://opengameart.org/content/caffeine-crazed-coin-op-kids-looping
+All credits go to: Eric Matyas
+
 ## Dokumentaatio
 
 - [Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)

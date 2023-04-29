@@ -15,6 +15,10 @@ def start_game():
 
     pygame.init()
 
+    pygame.mixer.init()
+    pygame.mixer.music.load("src/music/caffeine_crazed_coin-op_kids.mp3")
+    pygame.mixer.music.play(-1)
+
     game_loop.start()
 
 if __name__ == "__main__":
