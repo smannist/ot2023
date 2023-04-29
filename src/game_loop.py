@@ -39,6 +39,7 @@ class GameLoop:
             self._block_dropping()
             self._update_elapsed_time()
             self._update_score()
+            self._check_if_player_lost(self.placed_blocks)
 
             pygame.display.update()
 
@@ -142,6 +143,12 @@ class GameLoop:
     def _clear_rows(self, block_coordinates):
         while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
             self._place_current_block(block_coordinates, clear_block=True)
+
+    def _check_if_player_lost(self, placed_blocks):
+        for (_, row) in placed_blocks.keys():
+            if row < 1:
+                return True
+        return False
 
     def _update_elapsed_time(self):
         current_tick = pygame.time.get_ticks()
