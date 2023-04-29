@@ -13,7 +13,7 @@ Song: Caffeine Crazed Coin-Op Kids by Eric Matyas soundimage.org (https://openga
 
 ## Nykytila
 
-Pelissä ei voi vielä ansaita pisteitä, eikä ruudukolle tehdä yläraja tarkistusta (siispä peli ei lopu kunnollisesti jos palikka iskeytyy ruudukon kattoon). Muuten muut perustoiminallisuudet pitäisi olla kunnossa (rivien hajottamisessa tosin saattaa vielä olla bugeja, sillä kaikkia tilanteita en ole päässyt testailemaan).
+Perustoiminnallisuus toteutettu, mutta game_loopin testaus kuumottelee takana.
 
 ## Asennus
 
