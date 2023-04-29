@@ -6,7 +6,7 @@ Song: Caffeine Crazed Coin-Op Kids by Eric Matyas soundimage.org (https://openga
 
 ## Pelaaminen
 
-Palikkan ohjaus tapahtuu nuolinäppäimillä:
+Palikan ohjaus tapahtuu nuolinäppäimillä:
 
 &#8592; käänny vasemmalle
 
