@@ -35,9 +35,9 @@ class GameLoop:
                 self.block_landed = False
 
             self._reset_cells(block_coordinates)
-            self._update_elapsed_time()
             self._block_movement(block_coordinates)
             self._block_dropping()
+            self._update_elapsed_time()
             self._update_score()
 
             pygame.display.update()
