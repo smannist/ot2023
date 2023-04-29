@@ -38,7 +38,7 @@ class Renderer:
                                   TETRIS_HEIGHT + 40)
 
         pygame.draw.rect(display, COLORS["black"], border_rect, border_width)
-    # refactor later if time
+    # refactor all text stuff later if time
     def _render_next_block(self, display, block, block_size=30):
         font = self._get_font()
         text = self._set_text("Next block", font)
@@ -69,6 +69,14 @@ class Renderer:
         display.blit(v_text, (CENTER_X + TETRIS_WIDTH - 480 + s_text_width/2 - v_text_width/2, \
                               CENTER_Y + TETRIS_HEIGHT/2 - 40 + s_text_height/2 - v_text_height/2))
 
+    def _render_game_over_txt(self, display):
+        font = self._get_font(game_over=True)
+        text = self._set_text("Game Over", font)
+        t_width, t_height = font.size("Game Over")
+
+        display.blit(text, (CENTER_X + TETRIS_WIDTH/2 - t_width/2, \
+                        CENTER_Y + TETRIS_HEIGHT/2 - t_height/2))
+
     def _draw_block_shape(self, display, block, block_size, dx, shape_y):
         for i, row in enumerate(block.shape):
             for j, column in enumerate(row):
@@ -81,9 +89,12 @@ class Renderer:
     def _set_text(self, text, font):
         return font.render(text, 1, COLORS["black"])
 
-    def _get_font(self):
+    def _get_font(self, game_over=False):
         try:
-            font = pygame.font.Font(FONT_PATH, 18)
+            if not game_over:
+                font = pygame.font.Font(FONT_PATH, 18)
+            else:
+                font = pygame.font.Font(FONT_PATH, 40)
         except FileNotFoundError:
             font = pygame.font.SysFont("Roboto", 30)
         return font

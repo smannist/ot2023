@@ -22,7 +22,7 @@ class GameLoop:
 
     def start(self):
         while True:
-            self.renderer.render_all(self.display, self.next_block, self.score)
+            self._render_all()
 
             if not self._handle_events():
                 break
@@ -44,8 +44,10 @@ class GameLoop:
                 self._block_movement(block_coordinates)
                 self._place_current_block(block_coordinates)
                 self._reset_cells(block_coordinates)
+                self._render_game_over()
                 pygame.display.update()
-                pygame.time.delay(1500)
+                pygame.time.delay(3000)
+                break
 
             pygame.display.update()
 
@@ -169,3 +171,9 @@ class GameLoop:
 
     def _update_score(self):
         self.score = self.renderer.game_grid.score
+
+    def _render_all(self):
+        self.renderer.render_all(self.display, self.next_block, self.score)
+
+    def _render_game_over(self):
+        self.renderer._render_game_over_txt(self.display)
