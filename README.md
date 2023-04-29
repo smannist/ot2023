@@ -5,8 +5,11 @@ Legendaarinen Tetris pygame kirjastolla
 Palikkan ohjaus tapahtuu nuolinäppäimillä:
 
 &#8592; käänny vasemmalle
+
 &#8594; käänny oikealle
+
 &#8595; pudota palikka
+
 &#8593; rotaatio
 
 Song: Caffeine Crazed Coin-Op Kids by Eric Matyas soundimage.org (https://opengameart.org/content/caffeine-crazed-coin-op-kids-looping)
