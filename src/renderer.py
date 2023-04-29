@@ -69,7 +69,7 @@ class Renderer:
         display.blit(v_text, (CENTER_X + TETRIS_WIDTH - 480 + s_text_width/2 - v_text_width/2, \
                               CENTER_Y + TETRIS_HEIGHT/2 - 40 + s_text_height/2 - v_text_height/2))
 
-    def _render_game_over_txt(self, display):
+    def render_game_over_txt(self, display):
         font = self._get_font(game_over=True)
         text = self._set_text("Game Over", font)
         t_width, t_height = font.size("Game Over")

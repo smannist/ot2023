@@ -6,7 +6,7 @@ from config import FALL_TIME, FALL_SPEED
 from block_shapes import I_rot_list
 
 class GameLoop:
-    def __init__(self, renderer, display, block):
+    def __init__(self, renderer, display, block, highscore_service):
         self.renderer = renderer
         self.display = display
         self.previous_tick = pygame.time.get_ticks()
@@ -19,6 +19,7 @@ class GameLoop:
         self.placed_blocks = {}
         self.next_block = self._spawn_next_block()
         self.score = 0
+        self.highscore_service = highscore_service
 
     def start(self):
         while True:
@@ -45,6 +46,8 @@ class GameLoop:
                 self._place_current_block(block_coordinates)
                 self._reset_cells(block_coordinates)
                 self._render_game_over()
+                self.highscore_service.add_highscore(self.score)
+                print(self.highscore_service.get_highscores())
                 pygame.display.update()
                 pygame.time.delay(3000)
                 break
@@ -176,4 +179,4 @@ class GameLoop:
         self.renderer.render_all(self.display, self.next_block, self.score)
 
     def _render_game_over(self):
-        self.renderer._render_game_over_txt(self.display)
+        self.renderer.render_game_over_txt(self.display)

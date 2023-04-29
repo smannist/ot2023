@@ -4,20 +4,25 @@ from game_loop import GameLoop
 from renderer import Renderer
 from game_grid import GameGrid
 from block import Block
+from database.initialize_database import initialize_database
+from services.highscore_service import HighscoreService
 
 def start_game():
     display = pygame.display.set_mode((PYGAME_WIDTH , PYGAME_HEIGHT))
 
+    highscore_service = HighscoreService()
     game_grid = GameGrid()
     block = Block(5,0)
     renderer = Renderer(display, game_grid)
-    game_loop = GameLoop(renderer, display, block)
+    game_loop = GameLoop(renderer, display, block, highscore_service)
 
     pygame.init()
 
     pygame.mixer.init()
     pygame.mixer.music.load("src/music/caffeine_crazed_coin-op_kids.mp3")
     pygame.mixer.music.play(-1)
+
+    initialize_database()
 
     game_loop.start()
 
