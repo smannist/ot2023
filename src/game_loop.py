@@ -72,25 +72,25 @@ class GameLoop:
         self.previous_rotation = self.current_block.shape
         self.current_block.rotate()
 
-        if not self.renderer.game_grid.is_valid_move(self.current_block, self.placed_blocks):
+        if not self._is_valid_move():
             self.current_block.shape = self.previous_rotation
 
     def _handle_move_block_down(self):
         self.current_block.move_down()
 
-        if not self.renderer.game_grid.is_valid_move(self.current_block, self.placed_blocks):
+        if not self._is_valid_move():
             self.current_block.move_up()
 
     def _handle_move_block_left(self):
         self.current_block.move_left()
 
-        if not self.renderer.game_grid.is_valid_move(self.current_block, self.placed_blocks):
+        if not self._is_valid_move():
             self.current_block.move_right()
 
     def _handle_move_block_right(self):
         self.current_block.move_right()
 
-        if not self.renderer.game_grid.is_valid_move(self.current_block, self.placed_blocks):
+        if not self._is_valid_move():
             self.current_block.move_left()
 
     def _block_movement(self, current_block_coordinates):
@@ -162,6 +162,10 @@ class GameLoop:
         elapsed_time = current_tick - self.previous_tick
         self.fall_time += elapsed_time
         self.previous_tick = current_tick
+
+    def _is_valid_move(self):
+        return self.renderer.game_grid.is_valid_move(self.current_block, \
+                                                    self.placed_blocks)
 
     def _update_score(self):
         self.score = self.renderer.game_grid.score
