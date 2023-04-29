@@ -21,8 +21,8 @@ Tetriksestä tuttu pelitila:
 - [x] Tarkoituksena muodostaa suora pelin alatasolle
   - [x] Palikat hajoavat suoran muodostuessa
   - [x] Käyttäjä ansaitsee pisteitä
-- Peli nopeutuu ajan kuluessa
-  - Palikat tippuvat nopeammin
+- [x] Peli nopeutuu ajan kuluessa
+  - [x] Palikat tippuvat nopeammin
 
 Muita ominaisuuksia:
 
