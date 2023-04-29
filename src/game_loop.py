@@ -18,10 +18,11 @@ class GameLoop:
         self.previous_rotation = self.current_block.shape
         self.placed_blocks = {}
         self.next_block = self._spawn_next_block()
+        self.score = 0
 
     def start(self):
         while True:
-            self.renderer.render_all(self.display, self.next_block)
+            self.renderer.render_all(self.display, self.next_block, self.score)
 
             if not self._handle_events():
                 break
@@ -37,6 +38,7 @@ class GameLoop:
             self._update_elapsed_time()
             self._block_movement(block_coordinates)
             self._block_dropping()
+            self._update_score()
 
             pygame.display.update()
 
@@ -146,3 +148,6 @@ class GameLoop:
         elapsed_time = current_tick - self.previous_tick
         self.fall_time += elapsed_time
         self.previous_tick = current_tick
+
+    def _update_score(self):
+        self.score = self.renderer.game_grid.score

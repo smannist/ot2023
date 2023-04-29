@@ -6,11 +6,11 @@ class Renderer:
         self.display = display
         self.game_grid = game_grid
 
-    def render_all(self, display, next_block):
+    def render_all(self, display, next_block, score):
         self._render_background()
         self._render_full_board(display)
         self._render_next_block(display, next_block)
-        self._render_score(display)
+        self._render_score(display, score)
 
     def _render_background(self):
         self.display.fill((COLORS["cyan"]))
@@ -38,7 +38,7 @@ class Renderer:
                                   TETRIS_HEIGHT + 40)
 
         pygame.draw.rect(display, COLORS["black"], border_rect, border_width)
-
+    # refactor later if time
     def _render_next_block(self, display, block, block_size=30):
         font = self._get_font()
         text = self._set_text("Next block", font)
@@ -52,16 +52,22 @@ class Renderer:
                                CENTER_Y + TETRIS_HEIGHT/2 + text_height - 40)
 
         display.blit(text, (CENTER_X + TETRIS_WIDTH + 50, \
-                            CENTER_Y + TETRIS_HEIGHT/2 - 80)) #try to refactor the text part out later
-    
-    def _render_score(self, display):
+                            CENTER_Y + TETRIS_HEIGHT/2 - 80))
+
+    def _render_score(self, display, score):
         font = self._get_font()
-        text = self._set_text("Score", font)
 
-        _, text_height = font.size("Score")
+        score_text = self._set_text("Score", font)
+        v_text = self._set_text(str(score), font)
 
-        display.blit(text,(CENTER_X + TETRIS_WIDTH - 480, \
-                            CENTER_Y + TETRIS_HEIGHT/2 - 80) )
+        s_text_width, s_text_height = font.size("Score")
+        v_text_width, v_text_height = font.size(str(score))
+
+        display.blit(score_text, (CENTER_X + TETRIS_WIDTH - 480, \
+                                  CENTER_Y + TETRIS_HEIGHT/2 - 55 - s_text_height))
+
+        display.blit(v_text, (CENTER_X + TETRIS_WIDTH - 480 + s_text_width/2 - v_text_width/2, \
+                              CENTER_Y + TETRIS_HEIGHT/2 - 40 + s_text_height/2 - v_text_height/2))
 
     def _draw_block_shape(self, display, block, block_size, dx, shape_y):
         for i, row in enumerate(block.shape):

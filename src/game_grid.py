@@ -9,6 +9,7 @@ class GameGrid:
                                                    else COLORS["light_grey"] \
                                                    for col in range(self.columns)] \
                                                    for row in range(self.rows)])
+        self.score = 0
 
     def is_valid_move(self, block, placed_blocks):
         valid_moves = set((col, row) for row in range(GAME_GRID_ROWS) \
@@ -29,15 +30,13 @@ class GameGrid:
         self._reset_colors_for_all_cells(placed_blocks)
 
     def clear_rows(self, placed_blocks, block_landed=False):
-        rows_to_clear = []
+        rows_to_clear = self._get_rows_to_clear(placed_blocks)
 
-        if block_landed:
-            rows_to_clear = self._get_rows_to_clear(placed_blocks)
-
-            if rows_to_clear:
-                self._remove_blocks_in_rows(rows_to_clear, placed_blocks)
-                self._shift_blocks(rows_to_clear, placed_blocks)
-                self._reset_colors_for_all_cells(placed_blocks)
+        if block_landed and rows_to_clear:
+            self.score += 100*len(rows_to_clear)
+            self._remove_blocks_in_rows(rows_to_clear, placed_blocks)
+            self._shift_blocks(rows_to_clear, placed_blocks)
+            self._reset_colors_for_all_cells(placed_blocks)
 
         return placed_blocks, len(rows_to_clear) > 0
 
