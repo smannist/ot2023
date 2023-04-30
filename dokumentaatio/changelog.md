@@ -78,3 +78,32 @@
 
   - GameGrid luokka:
     - Kaikki ruudukot palautuvat odotettavasti
+
+## Viikko 6
+
+- GameLoop luokkaa muokattu:
+
+  - Lisätty ominaisuus pelin häviämisen tarkistamiseen
+  - Lisätty ominaisuus palikan putoamisen nopeuttamiseksi
+  - Lisätty ominaisuus pisteiden päivittämiseen
+  - Pieni muokkaus koordinaatteihin joihin uusi palikka spawnataan, sillä edelliset koordinaatit aiheuttivat vaikeuksia värien piirtämiseen ruudukon katossa
+  - Renderer kutsut game over ja highscore teksteille
+
+- Renderer luokkaa muokattu:
+
+  - Seuraavan palikan kuva renderöidään nyt ikkunan oikealle reunalle
+  - Pisteet renderöidään vasemmalle reunalle
+  - Jotain irrallisia funktioita fonttien ja tekstien luomisen/saamisen helpottamiseksi
+
+- GameGrid luokkaa muokattu:
+
+  - Clear rows korjattu, nyt yksinkertaisesti vain lisätään uusi rivi ylös ja päivitetään pudonneiden palikkojen sanakirjaa sen mukaisesti
+  - Update grid päivittää värit kun tämä on tehty
+
+- Uudet luokat:
+
+  - Tietokannan luominen ja yhteys (initialize_databaes + database_connection)
+  - Highscore_repository + service
+    - Pitää yllä pysyväistallennusta pisteistä (ja noutaa tiedon tarvittaessa)
+
+- Lisäksi lisätty fontti ja bängeri biisi
