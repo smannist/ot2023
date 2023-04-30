@@ -102,7 +102,7 @@
 
 - Uudet luokat:
 
-  - Tietokannan luominen ja yhteys (initialize_databaes + database_connection)
+  - Tietokannan luominen ja yhteys (initialize_database + database_connection)
   - Highscore_repository + service
     - Pitää yllä pysyväistallennusta pisteistä (ja noutaa tiedon tarvittaessa)
 
