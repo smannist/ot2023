@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 from src.game_grid import GameGrid
 from src.block import Block
-from src.config import COLORS
+from src.config import COLORS, GAME_GRID_ROWS, GAME_GRID_COLUMNS
 
 class TestGameGrid(unittest.TestCase):
     def setUp(self):
@@ -59,3 +59,8 @@ class TestGameGrid(unittest.TestCase):
                 else:
                     assert np.all(self.game_grid.grid[row][col] == placed_blocks[(col, row)])
 
+    def test_remove_row(self):
+        # create full row of color matching block "T" and remove
+        placed_blocks = {(j, 5): COLORS["T"] for j in range(GAME_GRID_COLUMNS)}
+        self.game_grid._remove_row(5, placed_blocks)
+        self.assertNotIn((5, 9), placed_blocks.keys())
