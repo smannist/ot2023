@@ -9,26 +9,26 @@ class GameLoop:
     """A class that is responsible for running the main game loop for Tetris game.
 
     Attributes:
-        renderer (object): Renderer object that handles the visualization of the game
-        display (object): pygame.display object that handles the window management
-        block (object): Block object representing the block on the game grid
-        highscore_service (object): HighscoreService class that handles the saving and loading of highscores
+        renderer (object): handles the visualization of the game
+        display (object): handles the window management
+        block (object): represents the block on the game grid
+        highscore_service (object): handles the saving and loading of highscores
     """
     def __init__(self, renderer, display, block, highscore_service):
         """Class constructor which creates a single game grid object
 
 
         Args:
-            renderer (object): Renderer object that handles the visualization of the game
-            display (object): pygame.display object that handles the window management
+            renderer (object): handles the visualization of the game
+            display (object): handles the window management
             current_block (object): The current block on the game grid
-            highscore_service (object): HighscoreService class that handles the saving and loading of highscores
-            previous_tick (int): Time elapsed in milliseconds since the last tick of the game loop
-            fall_time (int): Time elapsed since the current block started falling
+            highscore_service (object): handles the saving and loading of highscores
+            previous_tick (int): Time elapsed in milliseconds
+            fall_time (int): Time since the current block started falling
             fall_speed (int): The interval in seconds between successive falls of the current block
             is_dropping (bool): Whether or not the current block is currently being dropped
             block_landed (bool): Whether or not the current block has landed on the game grid
-            previous_rotation (numpy_array): The orientation of the current block before it was last rotated
+            previous_rotation (numpy_array): Previous orientation of the current block
             placed_blocks (dict): A dictionary of currently placed blocks on the game grid
             next_block (object): The next block that will be generated
             score (int): The player's score
@@ -100,7 +100,8 @@ class GameLoop:
         return True
 
     def _handle_keydown(self, event):
-        """Handles a keydown event during the game loop, updating the current block's position based on the pressed key
+        """Handles a keydown event during the game loop
+           such as updating the current block's position based on the pressed key
 
         Args:
             event (pygame.event): pygame event object that represents the key pressed
@@ -115,7 +116,7 @@ class GameLoop:
             self._handle_move_block_right()
 
     def _handle_rotate_block(self):
-        """Rotates the current block to its next orientation by calling the rotate method of the current block
+        """Rotates the current block to its next orientation
            and checks that the rotation is valid
         """
         self.previous_rotation = self.current_block.shape
@@ -153,7 +154,8 @@ class GameLoop:
            and spawns the next block
 
         Args:
-            current_block_coordinates (list): A list of (col, row) tuples representing the current block's position
+            current_block_coordinates (list): A list of (col, row) 
+            tuples representing the current block's position
         """
         for _, (col, row) in enumerate(current_block_coordinates):
             if self._collided_with_bottom(row, current_block_coordinates) \
@@ -183,7 +185,8 @@ class GameLoop:
 
         Args:
             row (int): Current row on the game rid
-            current_block_coordinates (list): A list of (col, row) tuples representing the current block's position
+            current_block_coordinates (list): A list of (col, row)
+            tuples representing the current block's position
 
         Returns:
             bool: True if the block has collided with the bottom of the game grid, False otherwise
@@ -201,10 +204,11 @@ class GameLoop:
         return False
 
     def _collided_with_block(self, current_block_coordinates, placed_blocks):
-        """Checks if the current block has collided with any currently placed blocks on the game grid
+        """Checks if the current block has collided with any placed blocks on the game grid
 
         Args:
-            current_block_coordinates (list): A list of (col, row) tuples representing the current block's position
+            current_block_coordinates (list): A list of (col, row)
+            tuples representing the current block's position
             placed_blocks (dict): A dictionary of currently placed blocks on the game grid
 
         Returns:
@@ -220,7 +224,8 @@ class GameLoop:
         """Places the current block onto the game grid by updating the placed_blocks dictionary
 
         Args:
-            current_block_coordinates (list): A list of (col, row) tuples representing the current block's position
+            current_block_coordinates (list): A list of (col, row) 
+            tuples representing the current block's position
             y_offset (int): The y offset for the coordinate
             clear_block (bool): True if the block cleared a row, False otherwise
         """
@@ -243,7 +248,8 @@ class GameLoop:
         """Resets the cells on the game grid
 
         Args:
-            block_coordinates (list): A list of (col, row) tuples representing the current block's position
+            block_coordinates (list): A list of (col, row)
+            tuples representing the current block's position
         """
         self.renderer.game_grid.reset_cell_colors(block_coordinates, \
                                                   self.placed_blocks)
@@ -252,7 +258,8 @@ class GameLoop:
         """Clears any full rows on the game grid
 
         Args:
-            block_coordinates (list): A list of (col, row) tuples representing the current block's position
+            block_coordinates (list): A list of (col, row)
+            tuples representing the current block's position
         """
         while self.renderer.game_grid.clear_rows(self.placed_blocks, self.block_landed)[1]:
             self._place_current_block(block_coordinates, clear_block=True)
@@ -272,8 +279,7 @@ class GameLoop:
         return False
 
     def _update_elapsed_time(self):
-        """Updates the time elapsed since the last tick of the game loop and the time elapsed since the current block
-           started falling
+        """Updates the elapsed time
         """
         current_tick = pygame.time.get_ticks()
         elapsed_time = current_tick - self.previous_tick
@@ -284,8 +290,8 @@ class GameLoop:
         """Increases the fall speed of the block being dropped, making the game more difficult
 
         Args:
-            amount (float): The amount fall_speed will be decreased by, decreasing fall speed makes the block
-                            drop faster
+            amount (float): The amount fall_speed will be decreased by
+                            decreasing fall speed makes the block drop faster
         """
         self.fall_speed -= amount
 
