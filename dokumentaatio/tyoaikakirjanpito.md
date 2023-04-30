@@ -15,5 +15,5 @@
 | 27.4. | 5.5  | Rivien tyhjennys nyt (ehkä?) toiminallinen, lisäksi korjattu I-muotoisen palikan kolliisiobugi                                                                                        |
 | 28.4. | 3    | Rivien tyhjennyksen pitäisi toimia. Paljon refaktorointia ja muuttujien nimien tuunailua. Renderer piirtää nyt seuraavan palikan kuvan                                                |
 | 29.4. | 9    | Renderer luokan muokkausta, refaktorointia, musiikki, tietokannan alustus ja muu siihen liittyvä toiminnallisuus, pelin vaikeusasteen nousu, häviämisen tarkistus, clear_rows, docstr |
-| 30.4. | 1    | docstrings                                                                                                                                                                            |
-|  yht  | 67   |                                                                                                                                                                                       |
+| 30.4. | 4    | docstrings, paljon testausta, pieni korjaus add top funktioon (viimeinen rivi = häviö), testaus mockeilla taisi olla turhaa useammassa tapauksessa (tajusin vasta myöhemmin)          |
+|  yht  | 70   |                                                                                                                                                                                       |
