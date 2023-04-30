@@ -70,7 +70,7 @@ class TestGameLoop(unittest.TestCase):
         self.assertFalse(self.game_loop._collided_with_bottom(GAME_GRID_ROWS-1, self.game_loop.current_block.shape_to_coordinates.return_value))
 
     def test_block_collision_with_another_block_is_detected_correctly(self):
-        # Place a random block at positon (x,y) -> (1,20)
+        # Place a random block at position (x,y) -> (1,20)
         self.game_loop.placed_blocks = {(1,20): COLORS["T"]}
 
         # And matching coordinates for intersection
