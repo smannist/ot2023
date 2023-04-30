@@ -2,13 +2,14 @@ import unittest
 import numpy as np
 from src.game_grid import GameGrid
 from src.block import Block
-from src.config import COLORS, GAME_GRID_ROWS, GAME_GRID_COLUMNS
+from src.config import COLORS, GAME_GRID_COLUMNS
 
 class TestGameGrid(unittest.TestCase):
     def setUp(self):
         self.game_grid = GameGrid()
         self.block = Block(5,3)
         self.placed_blocks = {}
+        self.placed_blocks_full_row = {(j, 5): COLORS["T"] for j in range(GAME_GRID_COLUMNS)}
 
     def test_game_grid_is_initialized_with_correct_dimensions(self):
         self.assertEqual(self.game_grid.grid.shape, (21, 11, 3))
@@ -59,8 +60,18 @@ class TestGameGrid(unittest.TestCase):
                 else:
                     assert np.all(self.game_grid.grid[row][col] == placed_blocks[(col, row)])
 
-    def test_remove_row(self):
-        # create full row of color matching block "T" and remove
-        placed_blocks = {(j, 5): COLORS["T"] for j in range(GAME_GRID_COLUMNS)}
-        self.game_grid._remove_row(5, placed_blocks)
-        self.assertNotIn((5, 9), placed_blocks.keys())
+    def test_remove_full_rows_is_removed_correctly(self):
+        self.game_grid._remove_row(5, self.placed_blocks_full_row)
+        self.assertNotIn((5, 9), self.placed_blocks_full_row.keys())
+
+    def test_blocks_are_moved_down_accordingly(self):
+        self.game_grid._move_blocks_down(6, self.placed_blocks_full_row)
+        self.assertIn((0, 6), self.placed_blocks_full_row.keys())
+
+    def test_full_rows_are_found_correctly_for_clearing(self):
+        self.assertEqual(len(self.game_grid._get_rows_to_clear(self.placed_blocks_full_row)), 1)
+
+    def test_adding_new_row_to_the_top_of_the_game_grid(self):
+        expected_row = np.array([COLORS["dark_grey"] if (col+1) % 2 == 0 else COLORS["light_grey"] for col in range(GAME_GRID_COLUMNS)])
+        self.game_grid._add_new_top()
+        self.assertTrue(np.array_equal(self.game_grid.grid[0], expected_row))

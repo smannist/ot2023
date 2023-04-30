@@ -74,7 +74,7 @@ class GameGrid:
         if block_landed and rows_to_clear:
             self.score += 100*len(rows_to_clear)
             self._remove_rows_and_move(rows_to_clear, placed_blocks)
-            self._add_new_top(placed_blocks)
+            self._add_new_top()
 
         return placed_blocks, len(rows_to_clear) > 0
 
@@ -114,23 +114,15 @@ class GameGrid:
                 else:
                     self.grid[r+1][c] = self.grid[r][c]
 
-    def _add_new_top(self, placed_blocks):
+    def _add_new_top(self):
         """Adds a new row on top of the grid
 
         Args:
             placed_blocks (dict): Currently placed blocks on the game grid
         """
-        new_row = [COLORS["dark_grey"] if (col+1) % 2 == 0 else COLORS["light_grey"] \
-                for col in range(self.columns)]
-
-        for c in range(self.columns):
-            if (c, 0) in placed_blocks:
-                color = placed_blocks.pop((c, 0))
-                placed_blocks[(c, 1)] = color
-            else:
-                self.grid[1][c] = self.grid[0][c]
-
-        self.grid[0] = new_row
+        self.grid[0] = [COLORS["dark_grey"] if (col+1) % 2 == 0 \
+                                            else COLORS["light_grey"] \
+                                            for col in range(self.columns)]
 
     def _get_rows_to_clear(self, placed_blocks):
         """Checks if the grid currently contains any full rows
