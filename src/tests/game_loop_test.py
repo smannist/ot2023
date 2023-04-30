@@ -3,15 +3,23 @@ import numpy as np
 from unittest.mock import Mock
 from game_loop import GameLoop
 from config import GAME_GRID_ROWS, GAME_GRID_COLUMNS, COLORS
-from block_shapes import I
+from block_shapes import I, I_rot_list
+from block import Block
+from renderer import Renderer
+from game_grid import GameGrid
 
 class TestGameLoop(unittest.TestCase):
     def setUp(self):
         self.renderer_mock = Mock()
         self.display_mock = Mock()
+
         self.block_mock = Mock()
+        self.block = Block(5,10)
+
         self.highscore_service_mock = Mock()
+
         self.game_loop = GameLoop(self.renderer_mock, self.display_mock, self.block_mock, self.highscore_service_mock)
+        self.game_loop_no_block_mock = GameLoop(self.renderer_mock, self.display_mock, self.block, self.highscore_service_mock)
 
         self.block_mock.color = COLORS["T"]
 
@@ -82,3 +90,43 @@ class TestGameLoop(unittest.TestCase):
         ]
 
         self.assertTrue(self.game_loop._collided_with_block(self.game_loop.current_block.shape_to_coordinates.return_value, self.game_loop.placed_blocks))
+
+    def test_block_is_moved_down_correctly_on_the_game_grid_when_move_is_valid(self):
+        self.game_loop_no_block_mock._handle_move_block_down()
+        self.assertEqual(self.game_loop_no_block_mock.current_block.y, 11)
+
+    def test_block_is_moved_left_correctly_on_the_game_grid_when_move_is_valid(self):
+        self.game_loop_no_block_mock._handle_move_block_left()
+        self.assertEqual(self.game_loop_no_block_mock.current_block.x, 4)
+
+    def test_block_is_moved_right_correctly_on_the_game_grid_when_move_is_valid(self):
+        self.game_loop_no_block_mock._handle_move_block_right()
+        self.assertEqual(self.game_loop_no_block_mock.current_block.x, 6)
+
+    def test_block_is_not_moved_left_on_the_game_grid_when_move_is_not_valid(self):
+        renderer = Renderer(self.display_mock, GameGrid())
+        self.game_loop = GameLoop(renderer, self.display_mock, Block(GAME_GRID_ROWS-1, 0), self.highscore_service_mock)
+        self.game_loop._handle_move_block_left()
+        self.assertEqual(self.game_loop.current_block.x, GAME_GRID_ROWS-1)
+
+    def test_block_is_not_moved_right_on_the_game_grid_when_move_is_not_valid(self):
+        renderer = Renderer(self.display_mock, GameGrid())
+        self.game_loop = GameLoop(renderer, self.display_mock, Block(0, 0), self.highscore_service_mock)
+        self.game_loop._handle_move_block_right()
+        self.assertEqual(self.game_loop.current_block.x, 0)
+    
+    def test_block_is_rotated_correctly_on_the_game_grid_when_move_is_valid(self):
+        self.game_loop_no_block_mock.current_block.shape = I
+        self.game_loop_no_block_mock._handle_rotate_block()
+        expected_shape = I_rot_list[3]
+        actual_shape = self.game_loop_no_block_mock.current_block.shape
+        self.assertTrue(np.array_equal(expected_shape, actual_shape))
+
+    def test_block_is_not_rotated_if_the_move_is_not_valid(self):
+        renderer = Renderer(self.display_mock, GameGrid())
+        self.game_loop = GameLoop(renderer, self.display_mock, Block(0, 5), self.highscore_service_mock)
+        self.game_loop.current_block.shape = I
+        self.game_loop._handle_rotate_block()
+        expected_shape = I_rot_list[0]
+        actual_shape = self.game_loop.current_block.shape
+        self.assertTrue(np.array_equal(expected_shape, actual_shape))
