@@ -58,7 +58,7 @@ class GameGrid:
         self._update_grid(placed_blocks)
 
     def clear_rows(self, placed_blocks, block_landed=False):
-        """Clears any full rows on the game grid
+        """Clears any full rows on the game grid and updates score
 
         Args:
             placed_blocks (dict): Currently placed blocks on the game grid
