@@ -2,7 +2,7 @@ import pygame
 import numpy as np
 from pygame.locals import KEYDOWN, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
-from config import FALL_TIME, FALL_SPEED
+from config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
 from block_shapes import I_rot_list
 
 class GameLoop:
@@ -237,7 +237,7 @@ class GameLoop:
         Returns:
             Object: The next block object
         """
-        return Block(5,0)
+        return Block(BLOCK_START_X, BLOCK_START_Y)
 
     def _reset_cells(self, block_coordinates):
         """Resets the cells on the game grid

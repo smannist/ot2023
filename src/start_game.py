@@ -1,5 +1,5 @@
 import pygame
-from config import PYGAME_WIDTH, PYGAME_HEIGHT
+from config import PYGAME_WIDTH, PYGAME_HEIGHT, BLOCK_START_X, BLOCK_START_Y
 from game_loop import GameLoop
 from renderer import Renderer
 from game_grid import GameGrid
@@ -12,7 +12,7 @@ def start_game():
 
     highscore_service = HighscoreService()
     game_grid = GameGrid()
-    block = Block(5,0)
+    block = Block(BLOCK_START_X, BLOCK_START_Y)
     renderer = Renderer(display, game_grid)
     game_loop = GameLoop(renderer, display, block, highscore_service)
 
