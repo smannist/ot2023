@@ -107,3 +107,15 @@
     - Pitää yllä pysyväistallennusta pisteistä (ja noutaa tiedon tarvittaessa)
 
 - Lisäksi lisätty fontti ja bängeri biisi
+
+Testattu:
+
+- GameGrid luokka:
+
+  - Täydet rivit tunnistetaan
+  - Täysi rivi tyhjennetään
+  - Uusi rivi lisätään oikeanlaisesti
+
+- GameLoop luokka:
+  - Pelissä tapahtuvat kolliisiot tunnistetaan
+  - Palikka liikkuu kuten pitää
