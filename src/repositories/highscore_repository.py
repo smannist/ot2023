@@ -14,6 +14,6 @@ class HighscoreRepository:
                             VALUES (?)""", (score,))
         self._connection.commit()
 
-    def delete_lowest_highscore(self, id):
+    def delete_highscore(self, id):
         self.cur.execute("DELETE FROM highscores WHERE id = ?", (id,))
         self._connection.commit()
