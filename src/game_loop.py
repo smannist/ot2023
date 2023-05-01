@@ -1,5 +1,4 @@
 import pygame
-import numpy as np
 from pygame.locals import KEYDOWN, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
 from config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
@@ -75,7 +74,7 @@ class GameLoop:
                 self._render_game_over()
 
                 if self.score > 0:
-                    self._add_highscore(self.score)
+                    self._add_highscore()
                     self._delete_lowest_highscore()
 
                 self._render_highscores(
@@ -161,7 +160,7 @@ class GameLoop:
             tuples representing the current block's position
         """
         for _, (col, row) in enumerate(current_block_coordinates):
-            if self._collided_with_bottom(row, current_block_coordinates) \
+            if self._collided_with_bottom(row) \
                     or self._collided_with_block(current_block_coordinates, self.placed_blocks):
                 self._place_current_block(
                     current_block_coordinates, y_offset=1)
@@ -182,7 +181,7 @@ class GameLoop:
             self.fall_time = 0
             self.current_block.move_down()
 
-    def _collided_with_bottom(self, row, current_block_coordinates):
+    def _collided_with_bottom(self, row):
         """Checks if the current block has collided with the bottom of the game grid
 
         Args:
@@ -321,7 +320,7 @@ class GameLoop:
         """
         self.renderer.render_highscores(self.display, highscore)
 
-    def _add_highscore(self, score):
+    def _add_highscore(self):
         """Adds a highscore if it meets the criteria
         """
         self.highscore_service.add_highscore(self.score)
