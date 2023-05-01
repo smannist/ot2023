@@ -18,6 +18,7 @@ def start_game():
     game_loop = GameLoop(renderer, display, block, highscore_service)
 
     pygame.init()
+    pygame.display.set_caption("Tetris")
 
     pygame.mixer.init()
     pygame.mixer.music.load("src/music/caffeine_crazed_coin-op_kids.mp3")
