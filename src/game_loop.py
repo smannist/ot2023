@@ -26,7 +26,6 @@ class GameLoop:
             previous_tick (int): Time elapsed in milliseconds
             fall_time (int): Time since the current block started falling
             fall_speed (int): The interval in seconds between successive falls of the current block
-            is_dropping (bool): Whether or not the current block is currently being dropped
             block_landed (bool): Whether or not the current block has landed on the game grid
             previous_rotation (numpy_array): Previous orientation of the current block
             placed_blocks (dict): A dictionary of currently placed blocks on the game grid
@@ -41,7 +40,6 @@ class GameLoop:
         self.previous_tick = pygame.time.get_ticks()
         self.fall_time = FALL_TIME
         self.fall_speed = FALL_SPEED
-        self.is_dropping = False
         self.block_landed = False
         self.previous_rotation = self.current_block.shape
         self.placed_blocks = {}
@@ -95,7 +93,7 @@ class GameLoop:
             if event.type == QUIT:
                 pygame.quit()
                 return False
-            if event.type == KEYDOWN and not self.is_dropping:
+            if event.type == KEYDOWN:
                 self._handle_keydown(event)
         return True
 
@@ -174,11 +172,8 @@ class GameLoop:
             bool: True if the block was successfully moved down, False otherwise.
         """
         if self.fall_time >= self.fall_speed * 1000:
-            self.is_dropping = True
             self.fall_time = 0
             self.current_block.move_down()
-        else:
-            self.is_dropping = False
 
     def _collided_with_bottom(self, row, current_block_coordinates):
         """Checks if the current block has collided with the bottom of the game grid
