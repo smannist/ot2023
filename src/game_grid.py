@@ -72,7 +72,7 @@ class GameGrid:
         rows_to_clear = self._get_rows_to_clear(placed_blocks)
 
         if block_landed and rows_to_clear:
-            self.score += 100*len(rows_to_clear)
+            self._update_score(rows_to_clear)
             self._remove_rows_and_move(rows_to_clear, placed_blocks)
             self._add_new_top()
 
@@ -153,3 +153,12 @@ class GameGrid:
         for coords, color in placed_blocks.items():
             col, row = coords
             self.grid[row][col] = color
+
+    def _update_score(self, rows_to_clear):
+        """Updates the score based on the number of cleared rows
+           100 points for each row
+
+        Args:
+            rows_to_clear (list): Cleared rows as a list
+        """
+        self.score += 100*len(rows_to_clear)
