@@ -111,8 +111,6 @@ class GameGrid:
                 if (c, r) in placed_blocks:
                     color = placed_blocks.pop((c, r))
                     placed_blocks[(c, r+1)] = color
-                else:
-                    self.grid[r+1][c] = self.grid[r][c]
 
     def _add_new_top(self):
         """Adds a new row on top of the grid
