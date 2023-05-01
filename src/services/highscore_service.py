@@ -1,9 +1,11 @@
 from repositories.highscore_repository import HighscoreRepository
 from database.database_connection import get_database_connection
 
+
 class HighscoreService():
     def __init__(self):
-        self.highscore_repository = HighscoreRepository(get_database_connection())
+        self.highscore_repository = HighscoreRepository(
+            get_database_connection())
 
     def get_highscores(self):
         highscores = self.highscore_repository.fetch_highscores()
@@ -17,4 +19,5 @@ class HighscoreService():
         if len(current_highscores) > 5:
             current_highscores.sort(key=lambda x: x[1])
             for i in range(len(current_highscores) - 5):
-                self.highscore_repository.delete_lowest_highscore(current_highscores[i][0])
+                self.highscore_repository.delete_lowest_highscore(
+                    current_highscores[i][0])

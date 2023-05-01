@@ -1,6 +1,7 @@
 import numpy as np
 from config import GAME_GRID_COLUMNS, GAME_GRID_ROWS, COLORS
 
+
 class GameGrid:
     """Class which represents the game grid
     """
@@ -16,10 +17,8 @@ class GameGrid:
         """
         self.rows = GAME_GRID_ROWS
         self.columns = GAME_GRID_COLUMNS
-        self.grid = np.array([[COLORS["dark_grey"] if (row + col) % 2 == 0
-                                                   else COLORS["light_grey"] \
-                                                   for col in range(self.columns)] \
-                                                   for row in range(self.rows)])
+        self.grid = np.array([[COLORS["dark_grey"] if (row + col) % 2 == 0 else COLORS["light_grey"]
+                             for col in range(self.columns)] for row in range(self.rows)])
         self.score = 0
 
     def is_valid_move(self, block, placed_blocks):
@@ -33,8 +32,8 @@ class GameGrid:
             bool: True if the current block position is a subset of valid moves
                   else false
         """
-        valid_moves = set((col, row) for row in range(GAME_GRID_ROWS) \
-                                     for col in range(GAME_GRID_COLUMNS))
+        valid_moves = set((col, row) for row in range(GAME_GRID_ROWS)
+                          for col in range(GAME_GRID_COLUMNS))
 
         blocks_on_grid = set(placed_blocks.keys())
         valid_moves -= blocks_on_grid
@@ -118,9 +117,8 @@ class GameGrid:
         Args:
             placed_blocks (dict): Currently placed blocks on the game grid
         """
-        self.grid[0] = [COLORS["dark_grey"] if (col+1) % 2 == 0 \
-                                            else COLORS["light_grey"] \
-                                            for col in range(self.columns)]
+        self.grid[0] = [COLORS["dark_grey"] if (
+            col+1) % 2 == 0 else COLORS["light_grey"] for col in range(self.columns)]
 
     def _get_rows_to_clear(self, placed_blocks):
         """Checks if the grid currently contains any full rows
@@ -145,10 +143,8 @@ class GameGrid:
         Args:
             placed_blocks (dict): Currently placed blocks on the game grid
         """
-        self.grid = np.array([[COLORS["dark_grey"] if (row + col) % 2 == 0 \
-                              else COLORS["light_grey"] \
-                              for col in range(self.columns)] \
-                              for row in range(self.rows)])
+        self.grid = np.array([[COLORS["dark_grey"] if (row + col) % 2 == 0 else COLORS["light_grey"]
+                             for col in range(self.columns)] for row in range(self.rows)])
 
         for coords, color in placed_blocks.items():
             col, row = coords

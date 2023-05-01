@@ -2,6 +2,7 @@ import random
 import numpy as np
 from block_shapes import SHAPES
 
+
 class Block:
     """Class which represents a single block object in the game
 

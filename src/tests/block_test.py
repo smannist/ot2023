@@ -2,9 +2,10 @@ import unittest
 import numpy as np
 from block import Block
 
+
 class TestBlock(unittest.TestCase):
     def setUp(self):
-        self.block = Block(5,3)
+        self.block = Block(5, 3)
 
     def test_block_moves_down_correctly(self):
         self.block.move_down()

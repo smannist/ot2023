@@ -23,3 +23,7 @@ def open_report(ctx):
 @task
 def lint(ctx):
     ctx.run("pylint src", pty=True)
+
+@task
+def pep8(ctx):
+    ctx.run("autopep8 --in-place --recursive src", pty=True)

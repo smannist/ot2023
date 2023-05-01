@@ -1,5 +1,6 @@
 from database.database_connection import get_database_connection
 
+
 class HighscoreRepository:
     def __init__(self, connection):
         self._connection = connection

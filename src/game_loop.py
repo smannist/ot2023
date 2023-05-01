@@ -5,6 +5,7 @@ from block import Block
 from config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
 from block_shapes import I_rot_list
 
+
 class GameLoop:
     """A class that is responsible for running the main game loop for Tetris game.
 
@@ -14,6 +15,7 @@ class GameLoop:
         block (object): represents the block on the game grid
         highscore_service (object): handles the saving and loading of highscores
     """
+
     def __init__(self, renderer, display, block, highscore_service):
         """Class constructor which creates a single game grid object
 
@@ -76,7 +78,8 @@ class GameLoop:
                 if self.score > 0:
                     self._add_highscore()
 
-                self._render_highscores(self.highscore_service.get_highscores())
+                self._render_highscores(
+                    self.highscore_service.get_highscores())
                 pygame.display.update()
                 pygame.time.delay(3000)
                 break
@@ -188,7 +191,8 @@ class GameLoop:
         """
         if row == self.renderer.game_grid.grid.shape[0]:
             if any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
-                self._place_current_block(current_block_coordinates, y_offset=1)
+                self._place_current_block(
+                    current_block_coordinates, y_offset=1)
                 return True
 
         if row == self.renderer.game_grid.grid.shape[0]-1:
@@ -226,7 +230,8 @@ class GameLoop:
         """
         if not clear_block:
             for col, row in current_block_coordinates:
-                self.placed_blocks[(col, row-y_offset)] = self.current_block.color
+                self.placed_blocks[(col, row-y_offset)
+                                   ] = self.current_block.color
 
         for (c, r), color in self.placed_blocks.items():
             self.renderer.game_grid.grid[r][c] = color
@@ -246,7 +251,7 @@ class GameLoop:
             block_coordinates (list): A list of (col, row)
             tuples representing the current block's position
         """
-        self.renderer.game_grid.reset_cell_colors(block_coordinates, \
+        self.renderer.game_grid.reset_cell_colors(block_coordinates,
                                                   self.placed_blocks)
 
     def _clear_rows(self, block_coordinates):
@@ -296,8 +301,8 @@ class GameLoop:
         Returns:
             bool: True if the move is valid, False otherwise
         """
-        return self.renderer.game_grid.is_valid_move(self.current_block, \
-                                                    self.placed_blocks)
+        return self.renderer.game_grid.is_valid_move(self.current_block,
+                                                     self.placed_blocks)
 
     def _update_score(self):
         """Updates player score
@@ -314,7 +319,7 @@ class GameLoop:
         """
         self.renderer.render_game_over_txt(self.display)
 
-    def _render_highscores(self , highscore):
+    def _render_highscores(self, highscore):
         """Renders the highscore text
 
         Args:
