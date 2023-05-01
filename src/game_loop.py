@@ -75,12 +75,15 @@ class GameLoop:
                 self._render_game_over()
 
                 if self.score > 0:
-                    self._add_highscore()
+                    self._add_highscore(self.score)
+                    self._delete_lowest_highscore()
 
                 self._render_highscores(
                     self.highscore_service.get_highscores())
+
                 pygame.display.update()
                 pygame.time.delay(3000)
+
                 break
 
             pygame.display.update()
@@ -318,10 +321,15 @@ class GameLoop:
         """
         self.renderer.render_highscores(self.display, highscore)
 
-    def _add_highscore(self):
+    def _add_highscore(self, score):
         """Adds a highscore if it meets the criteria
         """
         self.highscore_service.add_highscore(self.score)
+
+    def _delete_lowest_highscore(self):
+        """_summary_
+        """
+        self.highscore_service.delete_lowest()
 
     def _increase_difficulty(self):
         """Increases fall speed based on elapsed time and current
