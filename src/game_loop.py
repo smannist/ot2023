@@ -3,8 +3,6 @@ import numpy as np
 from pygame.locals import KEYDOWN, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
 from config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
-from block_shapes import I_rot_list
-
 
 class GameLoop:
     """A class that is responsible for running the main game loop for Tetris game.
@@ -190,16 +188,9 @@ class GameLoop:
             bool: True if the block has collided with the bottom of the game grid, False otherwise
         """
         if row == self.renderer.game_grid.grid.shape[0]:
-            if any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
                 self._place_current_block(
                     current_block_coordinates, y_offset=1)
                 return True
-
-        if row == self.renderer.game_grid.grid.shape[0]-1:
-            if not any(np.array_equal(self.current_block.shape, shape) for shape in I_rot_list):
-                self._place_current_block(current_block_coordinates)
-                return True
-
         return False
 
     def _collided_with_block(self, current_block_coordinates, placed_blocks):
