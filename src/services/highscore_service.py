@@ -11,9 +11,6 @@ class HighscoreService():
         highscores = self.highscore_repository.fetch_highscores()
         return [{'id': row[0], 'score': row[1]} for row in highscores]
 
-    def add_highscore(self, score):
-        self.highscore_repository.insert_highscore(score)
-
     def delete_lowest(self):
         current_highscores = self.highscore_repository.fetch_highscores()
 
