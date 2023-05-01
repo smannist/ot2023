@@ -4,6 +4,7 @@ from pygame.locals import KEYDOWN, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
 from block import Block
 from config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
 
+
 class GameLoop:
     """A class that is responsible for running the main game loop for Tetris game.
 
@@ -159,6 +160,8 @@ class GameLoop:
         for _, (col, row) in enumerate(current_block_coordinates):
             if self._collided_with_bottom(row, current_block_coordinates) \
                     or self._collided_with_block(current_block_coordinates, self.placed_blocks):
+                self._place_current_block(
+                    current_block_coordinates, y_offset=1)
                 self.block_landed = True
                 self.current_block = self.next_block
                 self.next_block = self._spawn_next_block()
@@ -188,9 +191,7 @@ class GameLoop:
             bool: True if the block has collided with the bottom of the game grid, False otherwise
         """
         if row == self.renderer.game_grid.grid.shape[0]:
-                self._place_current_block(
-                    current_block_coordinates, y_offset=1)
-                return True
+            return True
         return False
 
     def _collided_with_block(self, current_block_coordinates, placed_blocks):
@@ -206,7 +207,6 @@ class GameLoop:
         """
         current_block_set = set(current_block_coordinates)
         if current_block_set.intersection(placed_blocks):
-            self._place_current_block(current_block_coordinates, y_offset=1)
             return True
         return False
 
