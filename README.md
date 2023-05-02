@@ -6,24 +6,13 @@ Legendaarinen Tetris pygame kirjastolla
 
 Song: Caffeine Crazed Coin-Op Kids by Eric Matyas soundimage.org (https://opengameart.org/content/caffeine-crazed-coin-op-kids-looping)
 
-## Pelaaminen
-
-Palikan ohjaus tapahtuu nuolinäppäimillä:
-
-&#8592; käänny vasemmalle
-
-&#8594; käänny oikealle
-
-&#8595; pudota palikkaa alemmas
-
-&#8593; rotaatio
-
 ## Dokumentaatio
 
 - [Vaatimusmäärittely](https://github.com/smannist/ot2023/blob/master/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 - [Arkkitehtuurikuvaus](https://github.com/smannist/ot2023/blob/master/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
+- [Käyttöohje](https://github.com/smannist/ot2023/blob/master/dokumentaatio/kayttoohje.md)
 - [Release 1](https://github.com/smannist/ot2023/releases/tag/viikko5)
 - [Release 2](https://github.com/smannist/ot2023/releases/tag/viikko6)
 
