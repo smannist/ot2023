@@ -115,8 +115,18 @@ Testattu:
   - Täydet rivit tunnistetaan
   - Täysi rivi tyhjennetään
   - Uusi rivi lisätään oikeanlaisesti
+  - Pisteitä nostetaan kun rivi hajotetaan
 
 - GameLoop luokka:
   - Pelissä tapahtuvat kolliisiot tunnistetaan
   - Palikka liikkuu kuten pitää
   - Palikka tippuu ajankuluessa kuten pitää
+  - Palikka ei tipu jos tarpeeksi aikaa ei ole kulunut
+  - Palikka ei "törmää mihinkään" jos kyseisellä neliöllä ei ole toista palikkaa
+  - Palikka asetetaan sanakirjaan ja ruudukolle oikein
+  - Pelin häviämisen testaus
+  - Peli jatkuu jos ei olla hävitty
+  - Kulunut aika lasketaan oikein
+  - Putoamisnopeus nousee oikein
+  - Vaikeusaste nousee ajan kuluessa
+  - Vaikausaste pysyy samana jos ei ole kulunut tarpeeksi aikaa
