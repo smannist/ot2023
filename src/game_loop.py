@@ -98,6 +98,7 @@ class GameLoop:
                 pygame.quit()
                 return False
             if event.type == KEYDOWN:
+                print(event.type)
                 self._handle_keydown(event)
         return True
 
