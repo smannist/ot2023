@@ -13,6 +13,9 @@ Song: Caffeine Crazed Coin-Op Kids by Eric Matyas soundimage.org (https://openga
 - [Arkkitehtuurikuvaus](https://github.com/smannist/ot2023/blob/master/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
 - [Käyttöohje](https://github.com/smannist/ot2023/blob/master/dokumentaatio/kayttoohje.md)
+
+## Release
+
 - [Release 1](https://github.com/smannist/ot2023/releases/tag/viikko5)
 - [Release 2](https://github.com/smannist/ot2023/releases/tag/viikko6)
 
