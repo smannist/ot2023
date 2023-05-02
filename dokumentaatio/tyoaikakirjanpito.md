@@ -17,4 +17,5 @@
 | 29.4. | 9    | Renderer luokan muokkausta, refaktorointia, musiikki, tietokannan alustus ja muu siihen liittyvä toiminnallisuus, pelin vaikeusasteen nousu, häviämisen tarkistus, clear_rows, docstr |
 | 30.4. | 4    | docstrings, paljon testausta, pieni korjaus add top funktioon (viimeinen rivi = häviö), testaus mockeilla taisi olla turhaa useammassa tapauksessa (tajusin vasta myöhemmin)          |
 | 1.5.  | 1    | Pientä siivousta että päästään mahdollisimman lähelle single responsibilityä                                                                                                          |
-|  yht  | 71   |                                                                                                                                                                                       |
+| 2.5.  | 2    | Dokumentaatiointia ja yksi testi                                                                                                                                                      |
+|  yht  | 73   |                                                                                                                                                                                       |
