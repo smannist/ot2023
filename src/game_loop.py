@@ -327,7 +327,7 @@ class GameLoop:
         self.highscore_service.add_highscore(self.score)
 
     def _delete_lowest_highscore(self):
-        """_summary_
+        """Deletes the lowest highscore from database
         """
         self.highscore_service.delete_lowest()
 
