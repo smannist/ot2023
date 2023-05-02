@@ -31,7 +31,7 @@ class TestGameLoop(unittest.TestCase):
                                                        for col in range(GAME_GRID_COLUMNS)]
                                                       for row in range(GAME_GRID_ROWS)])
 
-    def test_block_collision_with_bottom_is_detected_correctly_for_non_I(self):
+    def test_block_collision_with_bottom_is_detected_correctly(self):
         # Set coordinates to match the bottom of the grid and assert
         self.game_loop.current_block.shape_to_coordinates.return_value = [
             (0, GAME_GRID_ROWS),
@@ -41,7 +41,7 @@ class TestGameLoop(unittest.TestCase):
         ]
 
         self.assertTrue(self.game_loop._collided_with_bottom(
-            GAME_GRID_ROWS, self.game_loop.current_block.shape_to_coordinates.return_value))
+            GAME_GRID_ROWS))
 
         # Test with coordinates outside the bottom and assert
         self.game_loop.current_block.shape_to_coordinates.return_value = [
@@ -52,7 +52,7 @@ class TestGameLoop(unittest.TestCase):
         ]
 
         self.assertFalse(self.game_loop._collided_with_bottom(
-            GAME_GRID_ROWS - 2, self.game_loop.current_block.shape_to_coordinates.return_value))
+            GAME_GRID_ROWS - 1))
 
     def test_block_collision_with_another_block_is_detected_correctly(self):
         # Place a random block at position (x,y) -> (1,20)
