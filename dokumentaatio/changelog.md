@@ -119,3 +119,4 @@ Testattu:
 - GameLoop luokka:
   - Pelissä tapahtuvat kolliisiot tunnistetaan
   - Palikka liikkuu kuten pitää
+  - Palikka tippuu ajankuluessa kuten pitää
