@@ -22,6 +22,8 @@ Palikan ohjaus tapahtuu nuolinäppäimillä:
 - [Työaikakirjanpito](https://github.com/smannist/ot2023/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 - [Arkkitehtuurikuvaus](https://github.com/smannist/ot2023/blob/master/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/smannist/ot2023/blob/master/dokumentaatio/changelog.md)
+- [Release 1](https://github.com/smannist/ot2023/releases/tag/viikko5)
+- [Release 2](https://github.com/smannist/ot2023/releases/tag/viikko6)
 
 ## Nykytila
 
