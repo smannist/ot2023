@@ -1,5 +1,14 @@
 # Arkkitehtuurikuvaus
 
+## Pakkauskaavio
+
+Rakenne noudattaa pääsäntöisesti  kolmitasoista kerrosarkkitehtuuria ja sovelluksen kannalta oleellisten pakkauksien pakkausrakenne on alla oleva:
+
+![Pakkausrakenne](https://github.com/smannist/ot2023/blob/master/dokumentaatio/images/package.png)
+
+Sovelluslogiikan kannalta oleellisen tiedostot sijaitsevat src sekä services kansiossa, kun taas repositories vastaa pysyväistallennuksesta. Database kansio sisältää tiedostot tietokantayhteyden muodostamiseen ja luomiseen.
+
+
 ## Sovelluslogiikka
 
 Sovelluksen loogisen tietomallin muodostavat luokat Block, GameGrid sekä GameLoop. Block -luokka kuvastaa yksittäistä palikkaa pelin ruudukossa GameGrid. GameLoop vastaa pelisilmukan pyörittämisestä. GameLoopilla voi olla luonnollisesti vain yksi peliruudukko ja palikka käsittelyssä (current_block). GameLoop käsittelee varsinaisesti Renderer -luokassa sijaitsevaa ilmentymää GameGrid luokasta. Tämä tehtiin alunperin vain ruudukon piirtämisen helpottamiseksi. Luokkakaaviossa GameLoop -luokka on hieman yksinkertaistettu metodien/funktioiden suhteen sillä niitä on varsin monta.
