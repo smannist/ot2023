@@ -69,7 +69,7 @@ class TestGameLoop(unittest.TestCase):
 
         self.assertTrue(self.game_loop._collided_with_block(
             self.game_loop.current_block.shape_to_coordinates.return_value, self.game_loop.placed_blocks))
-        
+
     def test_no_collision_if_another_block_isnt_blocking_the_square(self):
         self.game_loop.placed_blocks = {(2, 20): COLORS["T"]}
 
@@ -141,18 +141,24 @@ class TestGameLoop(unittest.TestCase):
         renderer = Renderer(self.display_mock, GameGrid())
         self.game_loop_no_block_mock = GameLoop(
             renderer, self.display_mock, self.block, self.highscore_service_mock)
-        self.game_loop_no_block_mock.placed_blocks = {(5,5): COLORS["T"]}
-        block_coordinates = [(1,1),(1,1),(1,1),(1,1)]
-        self.game_loop_no_block_mock._place_current_block(block_coordinates, y_offset=1, clear_block=False)
-        self.assertTrue((self.game_loop_no_block_mock.renderer.game_grid.grid[5][5] == COLORS["T"]).all())
+        self.game_loop_no_block_mock.placed_blocks = {(5, 5): COLORS["T"]}
+        block_coordinates = [(1, 1), (1, 1), (1, 1), (1, 1)]
+        self.game_loop_no_block_mock._place_current_block(
+            block_coordinates, y_offset=1, clear_block=False)
+        self.assertTrue(
+            (self.game_loop_no_block_mock.renderer.game_grid.grid[5][5] == COLORS["T"]).all())
 
     def test_check_that_player_losing_the_game_is_detected_correctly(self):
-        placed = self.game_loop_no_block_mock.placed_blocks = {(5,0): COLORS["T"]}
-        self.assertTrue(self.game_loop_no_block_mock._check_if_player_lost(placed))
+        placed = self.game_loop_no_block_mock.placed_blocks = {
+            (5, 0): COLORS["T"]}
+        self.assertTrue(
+            self.game_loop_no_block_mock._check_if_player_lost(placed))
 
     def test_check_that_game_keeps_going_if_player_hasnt_lost(self):
-        placed = self.game_loop_no_block_mock.placed_blocks = {(5,1): COLORS["T"]}
-        self.assertFalse(self.game_loop_no_block_mock._check_if_player_lost(placed))
+        placed = self.game_loop_no_block_mock.placed_blocks = {
+            (5, 1): COLORS["T"]}
+        self.assertFalse(
+            self.game_loop_no_block_mock._check_if_player_lost(placed))
 
     def test_elapsed_time_is_updated_accordingly(self):
         self.game_loop.previous_tick = 10000
