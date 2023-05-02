@@ -111,3 +111,9 @@ class TestGameLoop(unittest.TestCase):
         expected_shape = I_rot_list[0]
         actual_shape = self.game_loop.current_block.shape
         self.assertTrue(np.array_equal(expected_shape, actual_shape))
+
+    def test_block_is_dropped_down_after_conditions_are_met_and_fall_time_is_reset(self):
+        self.game_loop_no_block_mock.fall_time = 500
+        self.game_loop_no_block_mock._block_dropping()
+        self.assertEqual(self.game_loop_no_block_mock.fall_time, 0)
+        self.assertEqual(self.game_loop_no_block_mock.current_block.y, 11)
