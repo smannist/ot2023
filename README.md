@@ -27,10 +27,6 @@ Palikan ohjaus tapahtuu nuolinäppäimillä:
 - [Release 1](https://github.com/smannist/ot2023/releases/tag/viikko5)
 - [Release 2](https://github.com/smannist/ot2023/releases/tag/viikko6)
 
-## Nykytila
-
-Perustoiminnallisuus toteutettu, mutta game_loopin testaus kuumottelee takana.
-
 ## Asennus
 
 1. Asenna riipuvuudet komennolla:
