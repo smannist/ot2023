@@ -7,6 +7,7 @@ from block_shapes import I, I_rot_list
 from block import Block
 from renderer import Renderer
 from game_grid import GameGrid
+from renderer import Renderer
 
 
 class TestGameLoop(unittest.TestCase):
@@ -68,6 +69,19 @@ class TestGameLoop(unittest.TestCase):
 
         self.assertTrue(self.game_loop._collided_with_block(
             self.game_loop.current_block.shape_to_coordinates.return_value, self.game_loop.placed_blocks))
+        
+    def test_no_collision_if_another_block_isnt_blocking_the_square(self):
+        self.game_loop.placed_blocks = {(2, 20): COLORS["T"]}
+
+        self.game_loop.current_block.shape_to_coordinates.return_value = [
+            (1, 20),
+            (3, 19),
+            (4, 18),
+            (5, 18)
+        ]
+
+        self.assertFalse(self.game_loop._collided_with_block(
+            self.game_loop.current_block.shape_to_coordinates.return_value, self.game_loop.placed_blocks))
 
     def test_block_is_moved_down_correctly_on_the_game_grid_when_move_is_valid(self):
         self.game_loop_no_block_mock._handle_move_block_down()
@@ -117,3 +131,44 @@ class TestGameLoop(unittest.TestCase):
         self.game_loop_no_block_mock._block_dropping()
         self.assertEqual(self.game_loop_no_block_mock.fall_time, 0)
         self.assertEqual(self.game_loop_no_block_mock.current_block.y, 11)
+
+    def test_block_is_not_dropped_if_conditions_are_not_met(self):
+        self.game_loop_no_block_mock.fall_time = 200
+        self.game_loop_no_block_mock._block_dropping()
+        self.assertEqual(self.game_loop_no_block_mock.current_block.y, 10)
+
+    def test_block_is_placed_on_the_grid_correctly_when_block_is_not_clear_block(self):
+        renderer = Renderer(self.display_mock, GameGrid())
+        self.game_loop_no_block_mock = GameLoop(
+            renderer, self.display_mock, self.block, self.highscore_service_mock)
+        self.game_loop_no_block_mock.placed_blocks = {(5,5): COLORS["T"]}
+        block_coordinates = [(1,1),(1,1),(1,1),(1,1)]
+        self.game_loop_no_block_mock._place_current_block(block_coordinates, y_offset=1, clear_block=False)
+        self.assertTrue((self.game_loop_no_block_mock.renderer.game_grid.grid[5][5] == COLORS["T"]).all())
+
+    def test_check_that_player_losing_the_game_is_detected_correctly(self):
+        placed = self.game_loop_no_block_mock.placed_blocks = {(5,0): COLORS["T"]}
+        self.assertTrue(self.game_loop_no_block_mock._check_if_player_lost(placed))
+
+    def test_check_that_game_keeps_going_if_player_hasnt_lost(self):
+        placed = self.game_loop_no_block_mock.placed_blocks = {(5,1): COLORS["T"]}
+        self.assertFalse(self.game_loop_no_block_mock._check_if_player_lost(placed))
+
+    def test_elapsed_time_is_updated_accordingly(self):
+        self.game_loop.previous_tick = 10000
+        self.game_loop._update_elapsed_time()
+        self.assertEqual(self.game_loop.fall_time, -10000)
+
+    def test_fall_speed_is_increased_correctly(self):
+        self.game_loop._increase_fall_speed(0.20)
+        self.assertEqual(self.game_loop.fall_speed, 0.30)
+
+    def test_difficulty_increases_as_the_game_goes_on(self):
+        self.game_loop.previous_tick = 2000
+        self.game_loop._increase_difficulty()
+        self.assertEqual(self.game_loop.difficulty, 7)
+
+    def test_difficulty_stays_the_same_if_enough_time_hasnt_passed(self):
+        self.game_loop.previous_tick = 1000
+        self.game_loop._increase_difficulty()
+        self.assertEqual(self.game_loop.difficulty, 2)

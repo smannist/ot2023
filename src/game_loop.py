@@ -129,12 +129,9 @@ class GameLoop:
             self.current_block.shape = self.previous_rotation
 
     def _handle_move_block_down(self):
-        """Moves the current block down and checks that the move is valid
+        """Moves the current block down, validity check is not needed here
         """
         self.current_block.move_down()
-
-        if not self._is_valid_move():
-            self.current_block.move_up()
 
     def _handle_move_block_left(self):
         """Moves the current block left and checks that the move is valid

@@ -86,3 +86,8 @@ class TestGameGrid(unittest.TestCase):
             col+1) % 2 == 0 else COLORS["light_grey"] for col in range(GAME_GRID_COLUMNS)])
         self.game_grid._add_new_top()
         self.assertTrue(np.array_equal(self.game_grid.grid[0], expected_row))
+
+    def test_score_is_updated_when_rows_are_cleared(self):
+        rows_to_clear = [19]
+        self.game_grid._update_score(len(rows_to_clear))
+        self.assertEqual(self.game_grid.score, 100)
