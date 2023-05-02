@@ -2,6 +2,8 @@
 
 Legendaarinen Tetris pygame kirjastolla
 
+<img src="https://github.com/smannist/ot2023/blob/master/dokumentaatio/images/tetris.png" width="400" height="400">
+
 Song: Caffeine Crazed Coin-Op Kids by Eric Matyas soundimage.org (https://opengameart.org/content/caffeine-crazed-coin-op-kids-looping)
 
 ## Pelaaminen
