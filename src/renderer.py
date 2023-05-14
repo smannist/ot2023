@@ -1,7 +1,6 @@
 import pygame
 from config import TETRIS_WIDTH, TETRIS_HEIGHT, COLORS, CENTER_X, CENTER_Y, FONT_PATH
 
-
 class Renderer:
     def __init__(self, display, game_grid):
         self.display = display
@@ -40,7 +39,6 @@ class Renderer:
                                   TETRIS_HEIGHT + 40)
 
         pygame.draw.rect(display, COLORS["black"], border_rect, border_width)
-    # refactor all text stuff later if time
 
     def _render_next_block(self, display, block, block_size=30):
         font = self._get_font()
@@ -88,7 +86,6 @@ class Renderer:
         display.blit(text, (CENTER_X + TETRIS_WIDTH/2 - t_width/2,
                             CENTER_Y + TETRIS_HEIGHT/2 - t_height/2 + 60))
 
-        # maybe dont assign variables , not sure
         x_pos = CENTER_X + TETRIS_WIDTH/2 - 50
         y_pos = CENTER_Y + TETRIS_HEIGHT/2 + 100
 
