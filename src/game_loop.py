@@ -64,7 +64,7 @@ class GameLoop:
                 self.block_landed = False
 
             self._reset_cells(block_coordinates)
-            self._block_movement(block_coordinates)
+            self._block_logic(block_coordinates)
             self._block_dropping()
             self._update_elapsed_time()
             self._increase_difficulty()
@@ -98,7 +98,6 @@ class GameLoop:
                 pygame.quit()
                 return False
             if event.type == KEYDOWN:
-                print(event.type)
                 self._handle_keydown(event)
         return True
 
@@ -149,25 +148,56 @@ class GameLoop:
         if not self._is_valid_move():
             self.current_block.move_left()
 
-    def _block_movement(self, current_block_coordinates):
-        """Updates the position of the current block on the game grid
-           and spawns the next block
+    def _block_logic(self, current_block_coordinates):
+        """Manages the movement of the current block and handles collision and placing
+           of next block
 
         Args:
             current_block_coordinates (list): A list of (col, row) 
-            tuples representing the current block's position
+            tuples representing the current block's position.
         """
         for _, (col, row) in enumerate(current_block_coordinates):
-            if self._collided_with_bottom(row) \
-                    or self._collided_with_block(current_block_coordinates, self.placed_blocks):
-                self._place_current_block(
-                    current_block_coordinates, y_offset=1)
-                self.block_landed = True
-                self.current_block = self.next_block
-                self.next_block = self._spawn_next_block()
+            if self._block_collided(current_block_coordinates, row):
+                self._handle_collision(current_block_coordinates)
                 break
-            if row >= 0:
-                self.renderer.game_grid.grid[row][col] = self.current_block.color
+
+            self._move_block_on_grid(col, row)
+
+    def _block_collided(self, current_block_coordinates, row):
+        """Checks if the block has collided with the bottom or another block.
+        
+        Args:
+            current_block_coordinates (list): A list of (col, row) 
+            tuples representing the current block's position.
+            row (int): The row index.
+
+        Returns:
+            bool: True if the block has collided, False otherwise.
+        """
+        return self._collided_with_bottom(row) or self._collided_with_block(current_block_coordinates, self.placed_blocks)
+
+    def _handle_collision(self, current_block_coordinates):
+        """Places current block on game grid and spawns next block
+
+        Args:
+            current_block_coordinates (list): A list of (col, row) 
+            tuples representing the current block's position.
+        """
+        self._place_current_block(current_block_coordinates, y_offset=1)
+        self.block_landed = True
+        self.current_block = self.next_block
+        self.next_block = self._spawn_next_block()
+
+    def _move_block_on_grid(self, col, row):
+        """Moves the block on the game grid by setting the colors on the 
+           game grid to match the color of the current block
+        
+        Args:
+            col (int): The column index.
+            row (int): The row index.
+        """
+        if row >= 0:
+            self.renderer.game_grid.grid[row][col] = self.current_block.color
 
     def _block_dropping(self):
         """Moves the current block down one row
