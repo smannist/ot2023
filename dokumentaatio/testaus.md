@@ -9,6 +9,10 @@ Ohjelman testaus on suoritettu yksikkö- ja integraatiotestauksilla Pythonin uni
 Luokkia GameGrid, GameLoop, Block ja HighscoreService on testattu niitä vastaavilla testiluokilla: TestGameGrid, TestGameLoop, TestBlock ja TestHighscoreService. Luokat jotka sisältävät riippuuksia
 on testattu injektoimalla riippuvuudet. Joissan tapauksissa kuten esim. GameLoopin kohdalla on myös käytetty Mock -olioita, vaikka tämä ei varsinaisesti pakollista olisi ollutkaan. HighscoreRepositoriota testataan erillisen testitietokannan "test-database.sqlite" avulla.
 
+### Repositorio-luokat
+
+Tällä hetkellä repository-luokkaa HighscoreRepository testataan pelkästään HighscoreService luokan testin luokan TestHighscoreService kautta.
+
 ### Testikattavuus
 
 Sovelluksen testauksen haaraumakattavuus on 70%. Testien ulkopuolelle jätettiin luokat: config, start_game, initialize_database ja database_connection.
