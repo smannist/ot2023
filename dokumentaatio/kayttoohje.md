@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin viimeisimmän [releasen](https://github.com/smannist/ot2023/releases/tag/viikko6) lähdekoodi valitsemalla Assets-osion alta Source code.
+Lataa projektin viimeisimmän [releasen](https://github.com/smannist/ot2023/releases/tag/viikko7) lähdekoodi valitsemalla Assets-osion alta Source code.
 
 Vaihtoehtoisesti voit halutessasi kloonata projektin suoraan tietokoneellesi komenolla:
 
