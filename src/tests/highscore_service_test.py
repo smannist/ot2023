@@ -53,7 +53,7 @@ class TestHighscoreService(unittest.TestCase):
 
         drop_tables(self.connection)
 
-    def test_lowest_score_is_deleted_if_there_are_less_than_5_entries(self):
+    def test_lowest_score_is_not_deleted_if_there_are_less_than_5_entries(self):
         for i in range(1, 4):
             self.highscore_service.add_highscore(i*100)
 

@@ -130,3 +130,15 @@ Testattu:
   - Putoamisnopeus nousee oikein
   - Vaikeusaste nousee ajan kuluessa
   - Vaikausaste pysyy samana jos ei ole kulunut tarpeeksi aikaa
+
+## Viikko 7
+
+Ei merkittäviä rakenteellisia muutoksia
+
+Testattu:
+
+- HighscoreService luokka:
+  - Pisteiden tallentaminen onnistuu
+  - Pisteiden nouto onnistuu
+  - Alhaisin piste poistetaan oikeanlaisesti
+  - Pisteitä ei poisteta jos niitä on vähemmän kuin 6
