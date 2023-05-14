@@ -12,14 +12,30 @@ class TestHighscoreService(unittest.TestCase):
 
         initialize_database()
 
+    def test_highscores_are_fetched_correctly(self):
         self.highscore_repository.insert_highscore(100)
 
-    def test_highscores_are_fetched_correctly(self):
         highscores = self.highscore_service.get_highscores()
 
         score = [score["score"] for score in highscores]
 
         self.assertEqual(score[0], 100)
         self.assertEqual(len(highscores), 1)
+
+        drop_tables(self.connection)
+
+    def test_lowest_score_is_deleted_if_there_are_more_than_5_entries(self):
+        for i in range(6):
+            self.highscore_repository.insert_highscore(i*100)
+
+        highscores = self.highscore_service.get_highscores()
+
+        self.assertEqual(len(highscores), 6)
+
+        self.highscore_service.delete_lowest()
+
+        highscores = self.highscore_service.get_highscores()
+
+        self.assertEqual(len(highscores), 5)
 
         drop_tables(self.connection)
