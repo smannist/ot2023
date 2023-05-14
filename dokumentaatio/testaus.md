@@ -14,3 +14,16 @@ on testattu injektoimalla riippuvuudet. Joissan tapauksissa kuten esim. GameLoop
 Sovelluksen testauksen haaraumakattavuus on 70%. Testien ulkopuolelle jätettiin luokat: config, start_game, initialize_database ja database_connection
 
 ![Testikattavuusraportti](https://github.com/smannist/ot2023/blob/master/dokumentaatio/images/coverage_rep.png)
+
+### Järjestelmätestaus
+
+Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
+
+### Asennus ja konfigurointi
+
+Sovellus on asennettu ja testattu käyttöohjeiden mukaisesti Linux ympäristössä. Tietokannan osalta ei vaadita erillisiä testaustiedostoja, vaan sovellus luo testitietokannan testien suorituksen aikana.
+
+### Toiminnallisuudet
+
+Kaikki määrittelydokumentin ja käyttöohjeen ilmoittamat toiminnallisuudet on suoritettu ongelmitta. Sovellus on rakennettu niin, että tietoa ei voi "vuotaa" esimerkiksi pelin matriisin ruudukon
+ulkopuolelle, jolloin peli kaatuisi indeksivirheeseen.
