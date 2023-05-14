@@ -2,7 +2,8 @@
 
 ## Sovelluksen tarkoitus
 
-Tarkoituksena on toteutaa legendaarinen Tetris käyttäen apuna Pythonin Pygame -kirjastoa. Peli tulee sisältämään ainakin tavallisen Tetriksestä tutun pelitilan jossa palikoita tiputellaan yksitellen tasolle sekä mahdollisesti jotain erikoisempia ominaisuuksia. Tietokantaa (joko postgresql tai sqlite) tullaan hyödyntämään pistetaulukon tallentamiseen ja hakemiseen.
+Kaikille tuttu legendaarinen Tetris. Pelaaja tiputtaa palikoita ja koettaa muodostaa suoran. Suoran muodostaminen antaa pelaajalle pisteitä ja tarkoituksena
+on luonnollisesti kerätä mahdollisimman monta pistettä. TOP 5 parasta pistettä esitetään pelaajalle pelikierroksen päättyessä.
 
 ## Käyttäjät
 
@@ -35,5 +36,3 @@ Kun perusversiossa määritellyt toiminnallisuudet on saatu kasaan sovellusta vo
   - Palikat jotka räjäyttävät koko rivin / tietyn alueen
 - Vaikeusasteet
 - Alkuikkuna jossa on mahdollista luoda omia palikoita
-
-Muita ominaisuuksia lisäillään niiden sattuessa mieleen.
