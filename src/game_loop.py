@@ -165,7 +165,7 @@ class GameLoop:
 
     def _block_collided(self, current_block_coordinates, row):
         """Checks if the block has collided with the bottom or another block.
-        
+
         Args:
             current_block_coordinates (list): A list of (col, row) 
             tuples representing the current block's position.
@@ -191,7 +191,7 @@ class GameLoop:
     def _move_block_on_grid(self, col, row):
         """Moves the block on the game grid by setting the colors on the 
            game grid to match the color of the current block
-        
+
         Args:
             col (int): The column index.
             row (int): The row index.

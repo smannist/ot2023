@@ -4,6 +4,7 @@ from services.highscore_service import HighscoreService
 from database.database_connection import get_database_connection
 from database.initialize_database import initialize_database, drop_tables
 
+
 class TestHighscoreService(unittest.TestCase):
     def setUp(self):
         self.connection = get_database_connection()

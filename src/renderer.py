@@ -1,6 +1,7 @@
 import pygame
 from config import TETRIS_WIDTH, TETRIS_HEIGHT, COLORS, CENTER_X, CENTER_Y, FONT_PATH
 
+
 class Renderer:
     """A class responsible for rendering the game state on the pygame display.
 
@@ -8,6 +9,7 @@ class Renderer:
         display (pygame.Surface): Pygame display object
         game_grid (object): Game grid object for handling rendering based on state changes
     """
+
     def __init__(self, display, game_grid):
         """Class constructor which creates a single renderer class.
 
