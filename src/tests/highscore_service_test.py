@@ -25,7 +25,7 @@ class TestHighscoreService(unittest.TestCase):
         drop_tables(self.connection)
 
     def test_lowest_score_is_deleted_if_there_are_more_than_5_entries(self):
-        for i in range(6):
+        for i in range(1, 7):
             self.highscore_repository.insert_highscore(i*100)
 
         highscores = self.highscore_service.get_highscores()
