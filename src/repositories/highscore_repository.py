@@ -5,9 +5,10 @@ class HighscoreRepository:
     Attributes:
         connection (object): SQLite database connection object
     """
+
     def __init__(self, connection):
         """Class constructor which creates a single HighscoreRepository object
-        
+
         Args:
             connection (object): SQLite database connection object
         """

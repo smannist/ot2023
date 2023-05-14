@@ -5,6 +5,7 @@ from database.database_connection import get_database_connection
 class HighscoreService():
     """HighscoreService class handles the logic for fetching, adding, and deleting highscores
     """
+
     def __init__(self):
         """Creates a single HighscoreService class object
 
