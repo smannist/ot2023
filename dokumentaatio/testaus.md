@@ -11,7 +11,7 @@ on testattu injektoimalla riippuvuudet. Joissan tapauksissa kuten esim. GameLoop
 
 ### Testikattavuus
 
-Sovelluksen testauksen haaraumakattavuus on 70%. Testien ulkopuolelle jätettiin luokat: config, start_game, initialize_database ja database_connection
+Sovelluksen testauksen haaraumakattavuus on 70%. Testien ulkopuolelle jätettiin luokat: config, start_game, initialize_database ja database_connection.
 
 ![Testikattavuusraportti](https://github.com/smannist/ot2023/blob/master/dokumentaatio/images/coverage_rep.png)
 
