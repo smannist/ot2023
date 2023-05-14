@@ -28,7 +28,7 @@ Graafinen käyttöliittymä Pygame -kirjastolla.
 
 ## Jatkokehitysideoita
 
-Kun perusversiossa määritellyt toiminnallisuudet on saatu kasaan sovellusta voidaan täydentää mm. alla olevilla ominaisuuksilla:
+Kaikki sovelluksen perustoiminnalisuudet saatiin valmiiksi. Alla on listattu muutama jatkokehitysidea:
 
 - Satunnaisesti tapahtuvia asioita peliin esimerkiksi
   - Sumu joka vaikeuttaa näkemistä
