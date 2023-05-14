@@ -18,4 +18,5 @@
 | 30.4. | 4    | docstrings, paljon testausta, pieni korjaus add top funktioon (viimeinen rivi = häviö), testaus mockeilla taisi olla turhaa useammassa tapauksessa (tajusin vasta myöhemmin)          |
 | 1.5.  | 1    | Pientä siivousta että päästään mahdollisimman lähelle single responsibilityä                                                                                                          |
 | 2.5.  | 2.5  | Dokumentaatiointia ja muutama testi                                                                                                                                                   |
-|  yht  | 73.5 |                                                                                                                                                                                       |
+| 14.5. | 6    | Dokumentointia, testausta, refaktorointia, env-tiedostot                                                                                                                              |
+|  yht  | 79.5 |                                                                                                                                                                                       |
