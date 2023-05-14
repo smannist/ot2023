@@ -7,8 +7,9 @@ from block import Block
 from database.initialize_database import initialize_database
 from services.highscore_service import HighscoreService
 
-
 def start_game():
+    """Responsible for setting up pygame and starting the game loop
+    """
     display = pygame.display.set_mode((PYGAME_WIDTH, PYGAME_HEIGHT))
 
     highscore_service = HighscoreService()
