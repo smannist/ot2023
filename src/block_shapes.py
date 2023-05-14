@@ -1,5 +1,5 @@
 import numpy as np
-from config import COLORS
+from src.config import COLORS
 
 S = np.array([[0, 0, 0, 0],
               [0, 1, 1, 0],

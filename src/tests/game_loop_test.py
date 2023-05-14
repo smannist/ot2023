@@ -1,13 +1,13 @@
 import unittest
 import numpy as np
 from unittest.mock import Mock
-from game_loop import GameLoop
-from config import GAME_GRID_ROWS, GAME_GRID_COLUMNS, COLORS
-from block_shapes import I, I_rot_list
-from block import Block
-from renderer import Renderer
-from game_grid import GameGrid
-from renderer import Renderer
+from src.game_loop import GameLoop
+from src.config import GAME_GRID_ROWS, GAME_GRID_COLUMNS, COLORS
+from src.block_shapes import I, I_rot_list
+from src.block import Block
+from src.renderer import Renderer
+from src.game_grid import GameGrid
+from src.renderer import Renderer
 
 
 class TestGameLoop(unittest.TestCase):

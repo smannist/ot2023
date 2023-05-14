@@ -1,5 +1,5 @@
 import numpy as np
-from config import GAME_GRID_COLUMNS, GAME_GRID_ROWS, COLORS
+from src.config import GAME_GRID_COLUMNS, GAME_GRID_ROWS, COLORS
 
 
 class GameGrid:

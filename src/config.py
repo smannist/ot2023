@@ -1,8 +1,21 @@
 import os
+from dotenv import load_dotenv
+
+dirname = os.path.dirname(__file__)
+
+try:
+    load_dotenv(dotenv_path=os.path.join(dirname, "..", ".env"))
+except FileNotFoundError:
+    pass
 
 ## FONT PATH ##
 
 FONT_PATH = os.path.join("src/fonts", "PressStart2P-Regular.ttf")
+
+## DATABASE ##
+
+DATABASE_FILENAME = os.getenv("DATABASE_FILENAME") or "database.sqlite"
+DATABASE_FILE_PATH = os.path.join(dirname, "data", DATABASE_FILENAME)
 
 ## GAME WINDOW DIMENSIONS ##
 
