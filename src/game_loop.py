@@ -51,7 +51,7 @@ class GameLoop:
         """Starts the main game loop, running until the player either loses or quits the game
         """
         while True:
-            self._render_all()
+            self._render_base()
 
             if not self._handle_events():
                 break
@@ -330,10 +330,10 @@ class GameLoop:
         """
         self.score = self.renderer.game_grid.score
 
-    def _render_all(self):
-        """Renders all base components to the game window
+    def _render_base(self):
+        """Renders all base components of the game window
         """
-        self.renderer.render_all(self.display, self.next_block, self.score)
+        self.renderer.render_base(self.display, self.next_block, self.score)
 
     def _render_game_over(self):
         """Renders the game over text
