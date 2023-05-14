@@ -1,3 +1,3 @@
 [run]
 source = src, src/repositories, src/services
-omit = src/**/__init__.py,src/tests/**, src/renderer.py, src/start_game.py, src/config.py, src/block_shapes.py
+omit = src/**/__init__.py,src/tests/**, src/renderer.py, src/start_game.py, src/config.py, src/block_shapes.py, src/database/initialize_database.py, src/database/database_connection.py
