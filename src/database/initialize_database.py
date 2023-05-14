@@ -1,6 +1,6 @@
 from database.database_connection import get_database_connection
 
-
+# drop_tables is used for testing
 def drop_tables(connection):
     cursor = connection.cursor()
 

@@ -38,7 +38,8 @@ T = np.array([[0, 0, 0, 0],
               [1, 1, 1, 0],
               [0, 0, 0, 0]])
 
-# I rotations list is used just for testing now
+# I-shape rotations are used for testing
+
 I_rot = np.array([[0, 0, 0, 0, 0, 0],
                   [0, 1, 1, 1, 1, 0],
                   [0, 0, 0, 0, 0, 0],
