@@ -14,8 +14,6 @@ Graafinen käyttöliittymä Pygame -kirjastolla.
 
 ## Perusversion tarjoama toiminnallisuus
 
-Tetriksestä tuttu pelitila:
-
 - [x] Yksinpeli
 - [x] Erikokoisia ja muotoisia palikoita
 - [x] Tarkoituksena muodostaa suora pelin alatasolle
@@ -23,9 +21,6 @@ Tetriksestä tuttu pelitila:
   - [x] Käyttäjä ansaitsee pisteitä
 - [x] Peli nopeutuu ajan kuluessa
   - [x] Palikat tippuvat nopeammin
-
-Muita ominaisuuksia:
-
 - [x] Käyttäjä pystyy tallentamaan pisteensä
   - [x] Pisteiden tulee olla tarpeeksi korkeat
     - [x] Esimerkiksi TOP 10
