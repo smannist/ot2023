@@ -19,7 +19,12 @@ def start_game():
     renderer = Renderer(display, game_grid)
     game_loop = GameLoop(renderer, display, block, highscore_service)
 
+    # Explanation:
+    # https://stackoverflow.com/questions/63550357/problems-with-pygame-in-vs-code-and-possible-false-error-alerts
+    # pylint: disable=no-member
     pygame.init()
+    # pylint: enable=no-member
+
     pygame.display.set_caption("Tetris")
 
     pygame.mixer.init()

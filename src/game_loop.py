@@ -95,7 +95,11 @@ class GameLoop:
         """
         for event in pygame.event.get():
             if event.type == QUIT:
+                # Explanation:
+                # https://stackoverflow.com/questions/63550357/problems-with-pygame-in-vs-code-and-possible-false-error-alerts
+                # pylint: disable=no-member
                 pygame.quit()
+                # pylint: enable=no-member
                 return False
             if event.type == KEYDOWN:
                 self._handle_keydown(event)
@@ -174,7 +178,8 @@ class GameLoop:
         Returns:
             bool: True if the block has collided, False otherwise.
         """
-        return self._collided_with_bottom(row) or self._collided_with_block(current_block_coordinates, self.placed_blocks)
+        return self._collided_with_bottom(row) \
+               or self._collided_with_block(current_block_coordinates, self.placed_blocks)
 
     def _handle_collision(self, current_block_coordinates):
         """Places current block on game grid and spawns next block
