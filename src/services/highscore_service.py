@@ -1,5 +1,5 @@
-from src.repositories.highscore_repository import HighscoreRepository
-from src.database.database_connection import get_database_connection
+from repositories.highscore_repository import HighscoreRepository
+from database.database_connection import get_database_connection
 
 class HighscoreService():
     def __init__(self):

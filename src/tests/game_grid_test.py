@@ -1,8 +1,8 @@
 import unittest
 import numpy as np
-from src.game_grid import GameGrid
-from src.block import Block
-from src.config import COLORS, GAME_GRID_COLUMNS
+from game_grid import GameGrid
+from block import Block
+from config import COLORS, GAME_GRID_COLUMNS
 
 
 class TestGameGrid(unittest.TestCase):

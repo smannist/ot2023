@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from src.block import Block
+from block import Block
 
 
 class TestBlock(unittest.TestCase):

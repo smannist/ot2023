@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import KEYDOWN, K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT
-from src.block import Block
-from src.config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
+from block import Block
+from config import FALL_TIME, FALL_SPEED, BLOCK_START_X, BLOCK_START_Y
 
 
 class GameLoop:

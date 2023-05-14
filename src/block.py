@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from src.block_shapes import SHAPES
+from block_shapes import SHAPES
 
 
 class Block:
