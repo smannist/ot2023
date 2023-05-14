@@ -6,7 +6,7 @@ Tarkoituksena on toteutaa legendaarinen Tetris käyttäen apuna Pythonin Pygame 
 
 ## Käyttäjät
 
-Koska sovelluksessa ei ole moninpelitilaa käyttäjiä tulee olemaan vain yksi.
+Sovelluksella on yksi käyttäjä (pelaaja).
 
 ## Käyttöliittymä
 
