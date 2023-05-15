@@ -7,7 +7,7 @@ Ohjelman testaus on suoritettu yksikkö- ja integraatiotestauksilla Pythonin uni
 ### Sovelluslogiikka
 
 Luokkia GameGrid, GameLoop, Block ja HighscoreService on testattu niitä vastaavilla testiluokilla: TestGameGrid, TestGameLoop, TestBlock ja TestHighscoreService. Luokat jotka sisältävät riippuuksia
-on testattu injektoimalla riippuvuudet. Joissan tapauksissa kuten esim. GameLoopin kohdalla on myös käytetty Mock -olioita, vaikka tämä ei varsinaisesti pakollista olisi ollutkaan. HighscoreRepositoriota testataan erillisen testitietokannan "test-database.sqlite" avulla.
+on testattu injektoimalla riippuvuudet. Joissan tapauksissa kuten esim. GameLoopin kohdalla on myös käytetty Mock -olioita, vaikka tämä ei varsinaisesti pakollista olisi ollutkaan. HighscoreServiceä testataan erillisen testitietokannan "test-database.sqlite" avulla.
 
 ### Repositorio-luokat
 
